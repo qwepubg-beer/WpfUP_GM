@@ -1,0 +1,1016 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище UP_GMModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeBid" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cover" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Author" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookInList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="TypeListID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenreName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="GenreBook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenreID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportAuthor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="ReportBook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportRewiew">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="RewiewID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rewiew">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="400" />
+          <Property Name="BookID" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeBid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BidName" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeBookList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bid_TypeBid">
+          <End Role="TypeBid" Type="Self.TypeBid" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="TypeBid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bid_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInList_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInList_TypeBookList">
+          <End Role="TypeBookList" Type="Self.TypeBookList" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBookList">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="TypeListID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInList_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenreBook_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="GenreBook" Type="Self.GenreBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenreBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenreBook_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="GenreBook" Type="Self.GenreBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenreBook">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportAuthor_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="1" />
+          <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportAuthor">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportAuthor_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportAuthor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportBook_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="ReportBook" Type="Self.ReportBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportBook_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="1" />
+          <End Role="ReportBook" Type="Self.ReportBook" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportBook">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportRewiew_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="1" />
+          <End Role="ReportRewiew" Type="Self.ReportRewiew" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportRewiew">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportRewiew_Rewiew">
+          <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="1" />
+          <End Role="ReportRewiew" Type="Self.ReportRewiew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rewiew">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportRewiew">
+              <PropertyRef Name="RewiewID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rewiew_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rewiew">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rewiew_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rewiew">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UP_GMModelContainer">
+          <EntitySet Name="Bid" EntityType="Self.Bid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookInList" EntityType="Self.BookInList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GenreBook" EntityType="Self.GenreBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportAuthor" EntityType="Self.ReportAuthor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportBook" EntityType="Self.ReportBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportRewiew" EntityType="Self.ReportRewiew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rewiew" EntityType="Self.Rewiew" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeBid" EntityType="Self.TypeBid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeBookList" EntityType="Self.TypeBookList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bid_TypeBid" Association="Self.FK_Bid_TypeBid">
+            <End Role="TypeBid" EntitySet="TypeBid" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bid_User" Association="Self.FK_Bid_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_Book" Association="Self.FK_BookInList_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_TypeBookList" Association="Self.FK_BookInList_TypeBookList">
+            <End Role="TypeBookList" EntitySet="TypeBookList" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_User" Association="Self.FK_BookInList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenreBook_Book" Association="Self.FK_GenreBook_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="GenreBook" EntitySet="GenreBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenreBook_Genre" Association="Self.FK_GenreBook_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="GenreBook" EntitySet="GenreBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_User" Association="Self.FK_Report_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportAuthor_Report" Association="Self.FK_ReportAuthor_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="ReportAuthor" EntitySet="ReportAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportAuthor_User" Association="Self.FK_ReportAuthor_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReportAuthor" EntitySet="ReportAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportBook_Book" Association="Self.FK_ReportBook_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="ReportBook" EntitySet="ReportBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportBook_Report" Association="Self.FK_ReportBook_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="ReportBook" EntitySet="ReportBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportRewiew_Report" Association="Self.FK_ReportRewiew_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="ReportRewiew" EntitySet="ReportRewiew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportRewiew_Rewiew" Association="Self.FK_ReportRewiew_Rewiew">
+            <End Role="Rewiew" EntitySet="Rewiew" />
+            <End Role="ReportRewiew" EntitySet="ReportRewiew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rewiew_Book" Association="Self.FK_Rewiew_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Rewiew" EntitySet="Rewiew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rewiew_User" Association="Self.FK_Rewiew_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Rewiew" EntitySet="Rewiew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UP_GMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bid">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeBid" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeBid1" Relationship="Self.FK_Bid_TypeBid" FromRole="Bid" ToRole="TypeBid" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Bid_User" FromRole="Bid" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="Book" ToRole="User" />
+          <NavigationProperty Name="BookInList" Relationship="Self.FK_BookInList_Book" FromRole="Book" ToRole="BookInList" />
+          <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Book" FromRole="Book" ToRole="GenreBook" />
+          <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_Book" FromRole="Book" ToRole="Rewiew" />
+          <NavigationProperty Name="Report" Relationship="Self.ReportBook" FromRole="Book" ToRole="Report" />
+        </EntityType>
+        <EntityType Name="BookInList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="TypeListID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_BookInList_Book" FromRole="BookInList" ToRole="Book" />
+          <NavigationProperty Name="TypeBookList" Relationship="Self.FK_BookInList_TypeBookList" FromRole="BookInList" ToRole="TypeBookList" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BookInList_User" FromRole="BookInList" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenreName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Genre" FromRole="Genre" ToRole="GenreBook" />
+        </EntityType>
+        <EntityType Name="GenreBook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenreID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_GenreBook_Book" FromRole="GenreBook" ToRole="Book" />
+          <NavigationProperty Name="Genre" Relationship="Self.FK_GenreBook_Genre" FromRole="GenreBook" ToRole="Genre" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Report_User" FromRole="Report" ToRole="User" />
+          <NavigationProperty Name="ReportAuthor" Relationship="Self.FK_ReportAuthor_Report" FromRole="Report" ToRole="ReportAuthor" />
+          <NavigationProperty Name="Book" Relationship="Self.ReportBook" FromRole="Report" ToRole="Book" />
+          <NavigationProperty Name="Rewiew" Relationship="Self.ReportRewiew" FromRole="Report" ToRole="Rewiew" />
+        </EntityType>
+        <EntityType Name="ReportAuthor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Report" Relationship="Self.FK_ReportAuthor_Report" FromRole="ReportAuthor" ToRole="Report" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ReportAuthor_User" FromRole="ReportAuthor" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Rewiew">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="BookID" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Rewiew_Book" FromRole="Rewiew" ToRole="Book" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Rewiew_User" FromRole="Rewiew" ToRole="User" />
+          <NavigationProperty Name="Report" Relationship="Self.ReportRewiew" FromRole="Rewiew" ToRole="Report" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeBid">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BidName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_TypeBid" FromRole="TypeBid" ToRole="Bid" />
+        </EntityType>
+        <EntityType Name="TypeBookList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BookInList" Relationship="Self.FK_BookInList_TypeBookList" FromRole="TypeBookList" ToRole="BookInList" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_User" FromRole="User" ToRole="Bid" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Book_User" FromRole="User" ToRole="Book" />
+          <NavigationProperty Name="BookInList" Relationship="Self.FK_BookInList_User" FromRole="User" ToRole="BookInList" />
+          <NavigationProperty Name="Report" Relationship="Self.FK_Report_User" FromRole="User" ToRole="Report" />
+          <NavigationProperty Name="ReportAuthor" Relationship="Self.FK_ReportAuthor_User" FromRole="User" ToRole="ReportAuthor" />
+          <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_User" FromRole="User" ToRole="Rewiew" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Bid_TypeBid">
+          <End Role="TypeBid" Type="Self.TypeBid" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBid">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="TypeBid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bid_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="Author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInList_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenreBook_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="GenreBook" Type="Self.GenreBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenreBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rewiew_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rewiew">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInList_TypeBookList">
+          <End Role="TypeBookList" Type="Self.TypeBookList" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeBookList">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="TypeListID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookInList_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GenreBook_Genre">
+          <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
+          <End Role="GenreBook" Type="Self.GenreBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genre">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="GenreBook">
+              <PropertyRef Name="GenreID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Report_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Report">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportAuthor_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="1" />
+          <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportAuthor">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportAuthor_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ReportAuthor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rewiew_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rewiew">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ReportBook">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+        </Association>
+        <Association Name="ReportRewiew">
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="0..1" />
+        </Association>
+        <EntityContainer Name="UP_GMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bid" EntityType="Self.Bid" />
+          <EntitySet Name="Book" EntityType="Self.Book" />
+          <EntitySet Name="BookInList" EntityType="Self.BookInList" />
+          <EntitySet Name="Genre" EntityType="Self.Genre" />
+          <EntitySet Name="GenreBook" EntityType="Self.GenreBook" />
+          <EntitySet Name="Report" EntityType="Self.Report" />
+          <EntitySet Name="ReportAuthor" EntityType="Self.ReportAuthor" />
+          <EntitySet Name="Rewiew" EntityType="Self.Rewiew" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeBid" EntityType="Self.TypeBid" />
+          <EntitySet Name="TypeBookList" EntityType="Self.TypeBookList" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Bid_TypeBid" Association="Self.FK_Bid_TypeBid">
+            <End Role="TypeBid" EntitySet="TypeBid" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bid_User" Association="Self.FK_Bid_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_Book" Association="Self.FK_BookInList_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenreBook_Book" Association="Self.FK_GenreBook_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="GenreBook" EntitySet="GenreBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rewiew_Book" Association="Self.FK_Rewiew_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Rewiew" EntitySet="Rewiew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_TypeBookList" Association="Self.FK_BookInList_TypeBookList">
+            <End Role="TypeBookList" EntitySet="TypeBookList" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_User" Association="Self.FK_BookInList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GenreBook_Genre" Association="Self.FK_GenreBook_Genre">
+            <End Role="Genre" EntitySet="Genre" />
+            <End Role="GenreBook" EntitySet="GenreBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Report_User" Association="Self.FK_Report_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportAuthor_Report" Association="Self.FK_ReportAuthor_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="ReportAuthor" EntitySet="ReportAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportAuthor_User" Association="Self.FK_ReportAuthor_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReportAuthor" EntitySet="ReportAuthor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rewiew_User" Association="Self.FK_Rewiew_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Rewiew" EntitySet="Rewiew" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="ReportBook" Association="Self.ReportBook">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Report" EntitySet="Report" />
+          </AssociationSet>
+          <AssociationSet Name="ReportRewiew" Association="Self.ReportRewiew">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="Rewiew" EntitySet="Rewiew" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UP_GMModelContainer" CdmEntityContainer="UP_GMEntities">
+          <EntitySetMapping Name="Bid">
+            <EntityTypeMapping TypeName="UP_GMModel.Bid">
+              <MappingFragment StoreEntitySet="Bid">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeBid" ColumnName="TypeBid" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book">
+            <EntityTypeMapping TypeName="UP_GMModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookInList">
+            <EntityTypeMapping TypeName="UP_GMModel.BookInList">
+              <MappingFragment StoreEntitySet="BookInList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="TypeListID" ColumnName="TypeListID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genre">
+            <EntityTypeMapping TypeName="UP_GMModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="GenreName" ColumnName="GenreName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenreBook">
+            <EntityTypeMapping TypeName="UP_GMModel.GenreBook">
+              <MappingFragment StoreEntitySet="GenreBook">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="GenreID" ColumnName="GenreID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Report">
+            <EntityTypeMapping TypeName="UP_GMModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportAuthor">
+            <EntityTypeMapping TypeName="UP_GMModel.ReportAuthor">
+              <MappingFragment StoreEntitySet="ReportAuthor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rewiew">
+            <EntityTypeMapping TypeName="UP_GMModel.Rewiew">
+              <MappingFragment StoreEntitySet="Rewiew">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="UP_GMModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UP_GMModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeBid">
+            <EntityTypeMapping TypeName="UP_GMModel.TypeBid">
+              <MappingFragment StoreEntitySet="TypeBid">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BidName" ColumnName="BidName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeBookList">
+            <EntityTypeMapping TypeName="UP_GMModel.TypeBookList">
+              <MappingFragment StoreEntitySet="TypeBookList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="UP_GMModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ReportBook" TypeName="UP_GMModel.ReportBook" StoreEntitySet="ReportBook">
+            <EndProperty Name="Book">
+              <ScalarProperty Name="id" ColumnName="BookID" />
+            </EndProperty>
+            <EndProperty Name="Report">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ReportRewiew" TypeName="UP_GMModel.ReportRewiew" StoreEntitySet="ReportRewiew">
+            <EndProperty Name="Report">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <EndProperty Name="Rewiew">
+              <ScalarProperty Name="id" ColumnName="RewiewID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
