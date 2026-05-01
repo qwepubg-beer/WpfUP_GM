@@ -23,7 +23,7 @@ namespace WpfUP_GM.Pages
         public Katalog()
         {
             InitializeComponent();
-            ProductList.ItemsSource = Core;
+            ProductList.ItemsSource = Core.GMEntities.Book.ToList();
             ManufacturerComboBox.ItemsSource = LoadManufacturers();
             TypeComboBox.ItemsSource = LoadTypeOfProduct();
         }
