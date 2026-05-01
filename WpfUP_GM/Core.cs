@@ -8,6 +8,6 @@ namespace WpfUP_GM
 {
     internal class Core
     {
-        public UP_GMEntities GMEntities = new UP_GMEntities();  
+        public static UP_GMEntities GMEntities = new UP_GMEntities();  
     }
 }
