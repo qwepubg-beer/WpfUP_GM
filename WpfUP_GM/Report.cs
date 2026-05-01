@@ -19,7 +19,7 @@ namespace WpfUP_GM
         public string Text { get; set; }
     
         public virtual User User { get; set; }
-        public virtual ReportAuthor ReportAuthor { get; set; }
+        public virtual User User1 { get; set; }
         public virtual Book Book { get; set; }
         public virtual Rewiew Rewiew { get; set; }
     }

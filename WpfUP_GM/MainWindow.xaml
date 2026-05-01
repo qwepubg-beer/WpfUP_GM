@@ -7,6 +7,45 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Name="Back" Grid.Row="0">
+                <Image Source="/Images/back.png"/>
+            </Button>
+            <Button Name="Menu" Grid.Row="1">
+                <Image Source="/Images/каталог.png"/>
+            </Button>
+            <Button Name="ListOfBook" Grid.Row="2">
+                <Image Source="/Images/books.png"/>
+            </Button>
+            <Button Name="Account" Grid.Row="3">
+                <Image/>
+            </Button>
+            <Button Name="Block" Grid.Row="4">
+                <Image/>
+            </Button>
+            <Button Name="Admin" Grid.Row="5">
+                <Image/>
+            </Button>
+            <Button Name="Author" Grid.Row="6">
+                <Image/>
+            </Button>
+        </Grid>
+        <Frame Name="MainFrame" Grid.Column="1">
+            
+        </Frame>
     </Grid>
 </Window>

@@ -24,7 +24,7 @@ namespace WpfUP_GM
         public int UserID { get; set; }
         public double Rating { get; set; }
         public string Text { get; set; }
-        public Nullable<int> BookID { get; set; }
+        public int BookID { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

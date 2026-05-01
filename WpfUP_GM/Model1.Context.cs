@@ -31,7 +31,6 @@ namespace WpfUP_GM
         public virtual DbSet<Genre> Genre { get; set; }
         public virtual DbSet<GenreBook> GenreBook { get; set; }
         public virtual DbSet<Report> Report { get; set; }
-        public virtual DbSet<ReportAuthor> ReportAuthor { get; set; }
         public virtual DbSet<Rewiew> Rewiew { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

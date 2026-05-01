@@ -18,6 +18,7 @@ namespace WpfUP_GM
         public int TypeBid { get; set; }
         public string Text { get; set; }
         public int UserID { get; set; }
+        public bool IsCompleted { get; set; }
     
         public virtual TypeBid TypeBid1 { get; set; }
         public virtual User User { get; set; }

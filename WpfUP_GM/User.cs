@@ -21,8 +21,8 @@ namespace WpfUP_GM
             this.Book = new HashSet<Book>();
             this.BookInList = new HashSet<BookInList>();
             this.Report = new HashSet<Report>();
-            this.ReportAuthor = new HashSet<ReportAuthor>();
             this.Rewiew = new HashSet<Rewiew>();
+            this.Report1 = new HashSet<Report>();
         }
     
         public int id { get; set; }
@@ -42,9 +42,9 @@ namespace WpfUP_GM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Report> Report { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReportAuthor> ReportAuthor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rewiew> Rewiew { get; set; }
         public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Report> Report1 { get; set; }
     }
 }

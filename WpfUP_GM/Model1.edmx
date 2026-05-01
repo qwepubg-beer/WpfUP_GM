@@ -13,6 +13,7 @@
           <Property Name="TypeBid" Type="int" Nullable="false" />
           <Property Name="Text" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
@@ -31,6 +32,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="ListID" Type="int" Nullable="false" />
           <Property Name="TypeListID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
@@ -63,7 +65,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ReportBook">
           <Key>
@@ -86,8 +88,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Rating" Type="float" Nullable="false" />
-          <Property Name="Text" Type="nvarchar" MaxLength="400" />
-          <Property Name="BookID" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -168,18 +170,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookInList_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="BookInList">
-              <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_BookInList_TypeBookList">
           <End Role="TypeBookList" Type="Self.TypeBookList" Multiplicity="1" />
           <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
@@ -253,7 +243,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReportAuthor_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -313,7 +303,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Rewiew_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
@@ -375,10 +365,6 @@
           <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
             <End Role="User" EntitySet="User" />
             <End Role="Book" EntitySet="Book" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookInList_Book" Association="Self.FK_BookInList_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="BookInList" EntitySet="BookInList" />
           </AssociationSet>
           <AssociationSet Name="FK_BookInList_TypeBookList" Association="Self.FK_BookInList_TypeBookList">
             <End Role="TypeBookList" EntitySet="TypeBookList" />
@@ -450,6 +436,7 @@
           <Property Name="TypeBid" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TypeBid1" Relationship="Self.FK_Bid_TypeBid" FromRole="Bid" ToRole="TypeBid" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bid_User" FromRole="Bid" ToRole="User" />
         </EntityType>
@@ -464,7 +451,6 @@
           <Property Name="Author" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="Book" ToRole="User" />
-          <NavigationProperty Name="BookInList" Relationship="Self.FK_BookInList_Book" FromRole="Book" ToRole="BookInList" />
           <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Book" FromRole="Book" ToRole="GenreBook" />
           <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_Book" FromRole="Book" ToRole="Rewiew" />
           <NavigationProperty Name="Report" Relationship="Self.ReportBook" FromRole="Book" ToRole="Report" />
@@ -475,9 +461,9 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="ListID" Type="Int32" Nullable="false" />
           <Property Name="TypeListID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Book" Relationship="Self.FK_BookInList_Book" FromRole="BookInList" ToRole="Book" />
           <NavigationProperty Name="TypeBookList" Relationship="Self.FK_BookInList_TypeBookList" FromRole="BookInList" ToRole="TypeBookList" />
           <NavigationProperty Name="User" Relationship="Self.FK_BookInList_User" FromRole="BookInList" ToRole="User" />
         </EntityType>
@@ -508,18 +494,9 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Report_User" FromRole="Report" ToRole="User" />
-          <NavigationProperty Name="ReportAuthor" Relationship="Self.FK_ReportAuthor_Report" FromRole="Report" ToRole="ReportAuthor" />
+          <NavigationProperty Name="User1" Relationship="Self.ReportAuthor" FromRole="Report" ToRole="User" />
           <NavigationProperty Name="Book" Relationship="Self.ReportBook" FromRole="Report" ToRole="Book" />
           <NavigationProperty Name="Rewiew" Relationship="Self.ReportRewiew" FromRole="Report" ToRole="Rewiew" />
-        </EntityType>
-        <EntityType Name="ReportAuthor">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="Report" Relationship="Self.FK_ReportAuthor_Report" FromRole="ReportAuthor" ToRole="Report" />
-          <NavigationProperty Name="User" Relationship="Self.FK_ReportAuthor_User" FromRole="ReportAuthor" ToRole="User" />
         </EntityType>
         <EntityType Name="Rewiew">
           <Key>
@@ -528,8 +505,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Double" Nullable="false" />
-          <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="BookID" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Rewiew_Book" FromRole="Rewiew" ToRole="Book" />
           <NavigationProperty Name="User" Relationship="Self.FK_Rewiew_User" FromRole="Rewiew" ToRole="User" />
           <NavigationProperty Name="Report" Relationship="Self.ReportRewiew" FromRole="Rewiew" ToRole="Report" />
@@ -583,9 +560,9 @@
           <NavigationProperty Name="Book" Relationship="Self.FK_Book_User" FromRole="User" ToRole="Book" />
           <NavigationProperty Name="BookInList" Relationship="Self.FK_BookInList_User" FromRole="User" ToRole="BookInList" />
           <NavigationProperty Name="Report" Relationship="Self.FK_Report_User" FromRole="User" ToRole="Report" />
-          <NavigationProperty Name="ReportAuthor" Relationship="Self.FK_ReportAuthor_User" FromRole="User" ToRole="ReportAuthor" />
           <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_User" FromRole="User" ToRole="Rewiew" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Report1" Relationship="Self.ReportAuthor" FromRole="User" ToRole="Report" />
         </EntityType>
         <Association Name="FK_Bid_TypeBid">
           <End Role="TypeBid" Type="Self.TypeBid" Multiplicity="1" />
@@ -623,18 +600,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_BookInList_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="1" />
-          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Book">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="BookInList">
-              <PropertyRef Name="BookID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_GenreBook_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="GenreBook" Type="Self.GenreBook" Multiplicity="*" />
@@ -648,7 +613,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Rewiew_Book">
-          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
@@ -707,30 +672,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ReportAuthor_Report">
-          <End Role="Report" Type="Self.Report" Multiplicity="1" />
-          <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Report">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ReportAuthor">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReportAuthor_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="ReportAuthor" Type="Self.ReportAuthor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ReportAuthor">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Rewiew_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
@@ -755,6 +696,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ReportAuthor">
+          <End Role="Report" Type="Self.Report" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+        </Association>
         <Association Name="ReportBook">
           <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
           <End Role="Report" Type="Self.Report" Multiplicity="*" />
@@ -770,7 +715,6 @@
           <EntitySet Name="Genre" EntityType="Self.Genre" />
           <EntitySet Name="GenreBook" EntityType="Self.GenreBook" />
           <EntitySet Name="Report" EntityType="Self.Report" />
-          <EntitySet Name="ReportAuthor" EntityType="Self.ReportAuthor" />
           <EntitySet Name="Rewiew" EntityType="Self.Rewiew" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -788,10 +732,6 @@
           <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
             <End Role="User" EntitySet="User" />
             <End Role="Book" EntitySet="Book" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BookInList_Book" Association="Self.FK_BookInList_Book">
-            <End Role="Book" EntitySet="Book" />
-            <End Role="BookInList" EntitySet="BookInList" />
           </AssociationSet>
           <AssociationSet Name="FK_GenreBook_Book" Association="Self.FK_GenreBook_Book">
             <End Role="Book" EntitySet="Book" />
@@ -817,20 +757,16 @@
             <End Role="User" EntitySet="User" />
             <End Role="Report" EntitySet="Report" />
           </AssociationSet>
-          <AssociationSet Name="FK_ReportAuthor_Report" Association="Self.FK_ReportAuthor_Report">
-            <End Role="Report" EntitySet="Report" />
-            <End Role="ReportAuthor" EntitySet="ReportAuthor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReportAuthor_User" Association="Self.FK_ReportAuthor_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="ReportAuthor" EntitySet="ReportAuthor" />
-          </AssociationSet>
           <AssociationSet Name="FK_Rewiew_User" Association="Self.FK_Rewiew_User">
             <End Role="User" EntitySet="User" />
             <End Role="Rewiew" EntitySet="Rewiew" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="ReportAuthor" Association="Self.ReportAuthor">
+            <End Role="Report" EntitySet="Report" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="ReportBook" Association="Self.ReportBook">
@@ -855,6 +791,7 @@
                 <ScalarProperty Name="TypeBid" ColumnName="TypeBid" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -875,6 +812,7 @@
               <MappingFragment StoreEntitySet="BookInList">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="ListID" ColumnName="ListID" />
                 <ScalarProperty Name="TypeListID" ColumnName="TypeListID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
@@ -904,14 +842,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReportAuthor">
-            <EntityTypeMapping TypeName="UP_GMModel.ReportAuthor">
-              <MappingFragment StoreEntitySet="ReportAuthor">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -974,6 +904,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="ReportAuthor" TypeName="UP_GMModel.ReportAuthor" StoreEntitySet="ReportAuthor">
+            <EndProperty Name="Report">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="id" ColumnName="UserID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="ReportBook" TypeName="UP_GMModel.ReportBook" StoreEntitySet="ReportBook">
             <EndProperty Name="Book">
               <ScalarProperty Name="id" ColumnName="BookID" />
