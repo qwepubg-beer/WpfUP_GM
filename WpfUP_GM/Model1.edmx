@@ -25,6 +25,7 @@
           <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Author" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Rating" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="BookInList">
           <Key>
@@ -450,6 +451,7 @@
           <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Author" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Rating" Type="Double" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="Book" ToRole="User" />
           <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Book" FromRole="Book" ToRole="GenreBook" />
           <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_Book" FromRole="Book" ToRole="Rewiew" />
@@ -804,6 +806,7 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

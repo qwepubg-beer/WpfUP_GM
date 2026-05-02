@@ -19,7 +19,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Margin="0,56,0,0" Grid.RowSpan="2">
+        <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Margin="-25,10,25,-10" Grid.Row="1">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="{Binding BackgroundColor}"/>
@@ -46,20 +46,15 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ComboBox x:Name="ManufacturerComboBox" 
-          Width="180" Grid.Column="1" Height="40"
-          IsEditable="True"
-          DisplayMemberPath="Name"
-          SelectedValuePath="Id">
+        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
+            <ComboBox x:Name="GenreComboBox" Width="180" Grid.Column="1" Height="40" IsEditable="True" DisplayMemberPath="Name" SelectedValuePath="Id" Margin="5" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="TypeComboBox" Width="180" Grid.Column="2" Height="40" IsEditable="True" Margin="5" SelectionChanged="TypeComboBox_SelectionChanged">
+            <ComboBoxItem Content="По рейтингу возрастание"></ComboBoxItem>
+            <ComboBoxItem Content="По рейтингу убывание"></ComboBoxItem>
+            <ComboBoxItem Content="По имени"></ComboBoxItem>
         </ComboBox>
-
-        <ComboBox x:Name="TypeComboBox" 
-          Width="180" Grid.Column="2" Height="40"
-          IsEditable="True"
-          DisplayMemberPath="Name"
-          SelectedValuePath="Id">
-        </ComboBox>
-        <StackPanel Grid.Column="3" Orientation="Horizontal">
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
             <Button Content="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" MaxWidth="200" MaxHeight="60" Click="Button_Click_1"/>
             <Button Content="Сброс" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" MaxWidth="200" MaxHeight="60" Margin="10,0,0,0" Click="Button_Click" />
         </StackPanel>

@@ -20,58 +20,59 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class Katalog : Page
     {
+
         public Katalog()
         {
             InitializeComponent();
             ProductList.ItemsSource = Core.GMEntities.Book.ToList();
-            ManufacturerComboBox.ItemsSource = LoadManufacturers();
-            TypeComboBox.ItemsSource = LoadTypeOfProduct();
+            GenreComboBox.ItemsSource = Core.GMEntities.Genre.ToList();
         }
-        private void ManufacturerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ProductList.ItemsSource = LoadProducts(TextSearch.Text, ManufacturerComboBox.SelectedItem as Manufacturers, TypeComboBox.SelectedItem as TypeOfProduct);
+            ProductList.ItemsSource= Core.GMEntities.Book.Where(a=>a.Name.Contains(TextSearch.Text) || a.User.Name.Contains(TextSearch.Text)).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TextSearch.Text = "";
-            ManufacturerComboBox.SelectedItem = null;
+            GenreComboBox.SelectedItem = null;
             TypeComboBox.SelectedItem = null;
-            ManufacturerComboBox.ItemsSource = LoadManufacturers();
+            ProductList.ItemsSource = Core.GMEntities.Book.ToList();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (ProductList.SelectedItem != null)
-            {
-                Products SelelectProduct = ProductList.SelectedItem as Products;
-                addProduct(SelelectProduct.ID);
-            }
-
+            //переход на подробную информацию
         }
-        public void addProduct(int ProductID)
+        private void GenreComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Static.user != null)
+            if (GenreComboBox.SelectedItem != null)
             {
-                Product_Basket product = Core.Context.Product_Basket.FirstOrDefault(u => u.ProductID == ProductID && u.UserID == Static.user.ID);
-                if (product != null)
-                {
-                    product.Count += 1;
-                }
-                else
-                {
-                    Product_Basket NewPrB = new Product_Basket(ProductID, Static.user.ID, 1);
-                    Core.Context.Product_Basket.Add(NewPrB);
-
-                }
-                Core.Context.SaveChanges();
+                Genre g = GenreComboBox.SelectedItem as Genre;
+                ProductList.ItemsSource = Core.GMEntities.Book.Where(b => b.GenreBook.Any(gb => gb.GenreID == g.id)).ToList();
             }
-
         }
+
+        private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+                switch (TypeComboBox.SelectedIndex)
+                {
+                    case 0:
+                    ProductList.ItemsSource = Core.GMEntities.Book.OrderBy(b => b.Rating).ToList();
+                    break;
+                    case 1:
+                    ProductList.ItemsSource = Core.GMEntities.Book.OrderByDescending(b => b.Rating).ToList();
+                    break;
+                    case 2:
+                    ProductList.ItemsSource = Core.GMEntities.Book.OrderBy(b => b.Name).ToList();
+                    break;
+                    default:   
+                    break;
+                }
+        }
+
+ 
     }
 }

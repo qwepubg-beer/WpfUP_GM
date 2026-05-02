@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e742052c0b348c2968ea4bf5ee45135" Name="Diagram1">
+      <Diagram DiagramId="23595afb82474fb6b015923dbc9e4faf" Name="Diagram1">
         <EntityTypeShape EntityType="UP_GMModel.Bid" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.Book" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.Book" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.BookInList" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.Genre" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.GenreBook" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.Report" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.Report" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.Rewiew" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.Role" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
