@@ -25,10 +25,11 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Отзывы" Grid.Column="1"></TextBlock>
         <Image Grid.RowSpan="3" Source="{Binding Cover}"/>
-        <TextBlock Grid.Row="4"  Text="{Binding User.Name, StringFormat=Автор: {0}%}"/>
+        <TextBlock Grid.Row="4"  Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
         <TextBlock Grid.Row="5"  Text="{Binding Name}" TextWrapping="Wrap"/>
         <TextBlock Grid.Row="6"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-        <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1"  Grid.RowSpan="8">
+        <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="1
+                 " Grid.RowSpan="8">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="{Binding BackgroundColor}"/>
@@ -42,7 +43,7 @@
                         <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Пользователь: {0}%}"/>
                         <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
                         <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
-                        <Button Height="40" Content="Пожаловаться" Click="Button_Click_2"></Button>
+                        <Button Height="40" Content="Пожаловаться" Click="Button_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
