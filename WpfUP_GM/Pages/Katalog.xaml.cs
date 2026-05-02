@@ -44,7 +44,7 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //переход на подробную информацию
+            
         }
         private void GenreComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
