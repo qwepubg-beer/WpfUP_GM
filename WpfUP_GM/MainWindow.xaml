@@ -22,10 +22,10 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Name="Back" Grid.Row="0">
+            <Button Name="Back" Grid.Row="0" Click="Back_Click">
                 <Image Source="/Images/back.png"/>
             </Button>
-            <Button Name="Menu" Grid.Row="1">
+            <Button Name="Menu" Grid.Row="1" Click="Menu_Click">
                 <Image Source="/Images/каталог.png"/>
             </Button>
             <Button Name="ListOfBook" Grid.Row="2">
@@ -44,7 +44,7 @@
                 <Image/>
             </Button>
         </Grid>
-        <Frame Name="MainFrame" Grid.Column="1">
+        <Frame Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden">
             
         </Frame>
     </Grid>

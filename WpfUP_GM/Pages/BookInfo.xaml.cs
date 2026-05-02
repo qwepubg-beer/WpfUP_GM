@@ -20,10 +20,10 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class BookInfo : Page
     {
-        public BookInfo(Book book)
+        public BookInfo()
         {
             InitializeComponent();
-            DataContext = book;
+            DataContext = Static.ChoosingBook;
             LoadRewiew();
         }
         private void LoadRewiew()

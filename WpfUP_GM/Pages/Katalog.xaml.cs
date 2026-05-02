@@ -20,7 +20,7 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class Katalog : Page
     {
-
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         public Katalog()
         {
             InitializeComponent();
@@ -44,7 +44,8 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
+            Static.ChoosingBook= ProductList.SelectedItem as Book;
+            mainWindow.MainFrame.NavigationService.Navigate(new BookInfo());
         }
         private void GenreComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
