@@ -109,6 +109,9 @@
     <Compile Include="Pages\Katalog.xaml.cs">
       <DependentUpon>Katalog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ListOfBook.xaml.cs">
+      <DependentUpon>ListOfBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Regestaration.xaml.cs">
       <DependentUpon>Regestaration.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Katalog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ListOfBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

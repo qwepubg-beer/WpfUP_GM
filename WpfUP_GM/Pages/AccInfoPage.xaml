@@ -31,7 +31,7 @@
             <Button Name="Rewiews" Margin="5" Content="Мои отзывы" Grid.Column="2" Click="Rewiews_Click"></Button>
             <Button Name="Freeze" Margin="5" Content="Ваш аккаунт заморожен" Grid.Column="3" Visibility="Hidden" Click="Freeze_Click"></Button>
             <Frame NavigationUIVisibility="Hidden" Name="UserFrame" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="5" Margin="5"/>
-            <ComboBox x:Name="TypeListComboBox" Margin="5" Grid.Column="0" IsEditable="True" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="TypeListComboBox_SelectionChanged">
+            <ComboBox x:Name="TypeListComboBox" Margin="5" Grid.Column="0" IsEditable="True" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="TypeListComboBox_SelectionChanged" SelectedIndex="1">
         </ComboBox>
     </Grid>
 </Page>

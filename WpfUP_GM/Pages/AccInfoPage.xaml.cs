@@ -25,22 +25,12 @@ namespace WpfUP_GM.Pages
         {
             InitializeComponent();
             TypeListComboBox.ItemsSource = Core.GMEntities.TypeBookList.ToList();
+            UserFrame.NavigationService.Navigate(new ListOfBook(TypeListComboBox.SelectedIndex));
         }
 
         private void TypeListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (TypeListComboBox.SelectedIndex)
-            {
-                case 1: //навигация по листам с книгами
-                    break;
-                case 2: 
-                    break;
-                case 3: 
-                    break;
-                case 4: 
-                    break;
-            }
-
+            UserFrame.NavigationService.Navigate(new ListOfBook(TypeListComboBox.SelectedIndex));
         }
 
         private void Freeze_Click(object sender, RoutedEventArgs e)

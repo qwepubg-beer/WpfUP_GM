@@ -32,7 +32,7 @@
                     <StackPanel HorizontalAlignment="Center">
                         <Image Height="100" Width="160"  Source="{Binding Cover}"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Автор: {0}%}"/>
+                            <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
                             <TextBlock Padding="5" Text="{Binding Name}" TextWrapping="Wrap"/>
                             <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
                         </StackPanel>
