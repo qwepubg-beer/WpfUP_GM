@@ -97,6 +97,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AccInfoPage.xaml.cs">
+      <DependentUpon>AccInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\BookInfo.xaml.cs">
       <DependentUpon>BookInfo.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AccInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\BookInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +218,7 @@
     <Resource Include="Images\назад.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\acc.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

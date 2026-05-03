@@ -29,10 +29,9 @@
                 <Image Source="/Images/каталог.png"/>
             </Button>
             <Button Name="ListOfBook" Grid.Row="2">
-                <Image Source="/Images/books.png"/>
+                <Image Source="/Images/acc.png"/>
             </Button>
             <Button Name="Account" Grid.Row="3">
-                <Image/>
             </Button>
             <Button Name="Block" Grid.Row="4">
                 <Image/>
