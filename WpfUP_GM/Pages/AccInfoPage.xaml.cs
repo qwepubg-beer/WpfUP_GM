@@ -35,7 +35,7 @@ namespace WpfUP_GM.Pages
 
         private void Freeze_Click(object sender, RoutedEventArgs e)
         {
-
+            UserFrame.NavigationService.Navigate(new FreezePage());
         }
 
         private void Rewiews_Click(object sender, RoutedEventArgs e)

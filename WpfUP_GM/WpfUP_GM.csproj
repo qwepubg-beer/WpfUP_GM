@@ -106,6 +106,9 @@
     <Compile Include="Pages\Enter.xaml.cs">
       <DependentUpon>Enter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FreezePage.xaml.cs">
+      <DependentUpon>FreezePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Katalog.xaml.cs">
       <DependentUpon>Katalog.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Enter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FreezePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
