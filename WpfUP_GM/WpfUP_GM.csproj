@@ -115,6 +115,9 @@
     <Compile Include="Pages\ListOfBook.xaml.cs">
       <DependentUpon>ListOfBook.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ReadBook.xaml.cs">
+      <DependentUpon>ReadBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Regestaration.xaml.cs">
       <DependentUpon>Regestaration.xaml</DependentUpon>
     </Compile>
@@ -151,7 +154,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Functions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -177,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ListOfBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReadBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

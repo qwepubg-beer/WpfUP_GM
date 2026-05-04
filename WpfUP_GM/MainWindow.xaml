@@ -28,18 +28,16 @@
             <Button Name="Menu" Grid.Row="1" Click="Menu_Click">
                 <Image Source="/Images/каталог.png"/>
             </Button>
-            <Button Name="ListOfBook" Grid.Row="2">
+            <Button Name="Account" Grid.Row="2" Click="Account_Click">
                 <Image Source="/Images/acc.png"/>
             </Button>
-            <Button Name="Account" Grid.Row="3">
-            </Button>
-            <Button Name="Block" Grid.Row="4">
+            <Button Name="Block" Grid.Row="3" Click="Block_Click">
                 <Image/>
             </Button>
-            <Button Name="Admin" Grid.Row="5">
+            <Button Name="Admin" Grid.Row="4">
                 <Image/>
             </Button>
-            <Button Name="Author" Grid.Row="6">
+            <Button Name="Author" Grid.Row="5">
                 <Image/>
             </Button>
         </Grid>

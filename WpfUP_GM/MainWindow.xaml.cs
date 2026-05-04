@@ -39,5 +39,21 @@ namespace WpfUP_GM
         {
             MainFrame.NavigationService.Navigate(new Katalog());
         }
+
+        private void Account_Click(object sender, RoutedEventArgs e)
+        {
+            if (Static.user != null) 
+            {
+                MainFrame.NavigationService.Navigate(new AccInfoPage());
+            }
+        }
+
+        private void Block_Click(object sender, RoutedEventArgs e)
+        {
+            if (Static.user != null)
+            {
+                MainFrame.NavigationService.Navigate(new FreezePage());
+            }
+        }
     }
 }

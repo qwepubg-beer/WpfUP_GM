@@ -16,18 +16,16 @@ using System.Windows.Shapes;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для FreezePage.xaml
+    /// Логика взаимодействия для ReadBook.xaml
     /// </summary>
-    public partial class FreezePage : Page
+    public partial class ReadBook : Page
     {
-        public FreezePage()
+        public ReadBook(Book book)
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //окно с созданием заявки
+            Text.Text=book.Text;
+            Name.Text=book.Name;
+            Autor.Text = book.User.Name;
         }
     }
 }
