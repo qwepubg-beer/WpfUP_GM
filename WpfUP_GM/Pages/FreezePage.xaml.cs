@@ -27,7 +27,23 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //окно с созданием заявки
+            if (Static.user != null)
+            {
+                var orderWindow = new FreezeWindow();
+                orderWindow.Owner = Window.GetWindow(this);
+                bool? dialogResult = orderWindow.ShowDialog();
+                if (dialogResult == true && orderWindow.IsConfirmed)
+                {
+                    string RewText = orderWindow.TextFr;
+                    Report rep = new Report()
+                    {
+                        UserID = Static.user.id,
+                        Text = RewText,
+                    };
+                    Core.GMEntities.Report.Add(rep);
+                    MessageBox.Show($"Жалоба отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
     }
 }
