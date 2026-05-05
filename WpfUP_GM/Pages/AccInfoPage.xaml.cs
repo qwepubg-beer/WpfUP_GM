@@ -40,12 +40,12 @@ namespace WpfUP_GM.Pages
 
         private void Rewiews_Click(object sender, RoutedEventArgs e)
         {
-
+            UserFrame.NavigationService.Navigate(new MyRewiew());
         }
 
         private void MyAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            UserFrame.NavigationService.Navigate(new MyAccount());
         }
     }
 }

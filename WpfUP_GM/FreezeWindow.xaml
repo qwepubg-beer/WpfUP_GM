@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Оспорить заморозку" VerticalAlignment="Center" Margin="5"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Текст для заявки" VerticalAlignment="Center" Margin="5"/>
         <TextBox Name="Text" Grid.Row="0" Grid.Column="1" Margin="5" Grid.RowSpan="2" TextWrapping="Wrap" Text="" Height="60"></TextBox>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
             <Button Content="Отправить" Width="80" Margin="5" Click="ConfirmButton_Click"/>

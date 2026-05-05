@@ -16,12 +16,13 @@ using System.Windows.Shapes;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для FreezePage.xaml
+    /// Логика взаимодействия для MyAccount.xaml
     /// </summary>
-    public partial class FreezePage : Page
+    public partial class MyAccount : Page
     {
-        public FreezePage()
+        public MyAccount()
         {
+            DataContext = Static.user;
             InitializeComponent();
         }
 
@@ -39,14 +40,13 @@ namespace WpfUP_GM.Pages
                     {
                         UserID = Static.user.id,
                         Text = RewText,
-                        TypeBid=1,
-                        UserID= Static.user.id,
-                        IsCompleted==false,
+                        TypeBid = 2,
+                        UserID = Static.user.id,
+                        IsCompleted == false,
                     };
                     Core.GMEntities.Report.Add(rep);
                     MessageBox.Show($"Жалоба отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-        }
     }
 }
