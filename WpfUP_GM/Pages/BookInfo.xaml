@@ -23,16 +23,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Отзывы" Grid.Column="1"></TextBlock>
+        <Grid Grid.Column="1" Grid.Row="8" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button  Content="Пожаловаться" Click="Button_Click" Grid.Column="0" Margin="5"/>
+            <Button  Content="Добавить" Click="Button_Click_1" Grid.Column="1" Margin="5"/>
+        </Grid>
         <Image Grid.RowSpan="3" Source="{Binding Cover}"/>
         <TextBlock Grid.Row="4"  Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
         <TextBlock Grid.Row="5"  Text="{Binding Name}" TextWrapping="Wrap"/>
         <TextBlock Grid.Row="6"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-        <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="1
-                 " Grid.RowSpan="8">
+        <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
-                    <Setter Property="Background" Value="{Binding BackgroundColor}"/>
                     <Setter Property="Margin" Value="5"/>
                     <Setter Property="Padding" Value="5"/>
                 </Style>
@@ -43,7 +48,6 @@
                         <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Пользователь: {0}%}"/>
                         <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
                         <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
-                        <Button Height="40" Content="Пожаловаться" Click="Button_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

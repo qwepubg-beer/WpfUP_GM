@@ -53,5 +53,30 @@ namespace WpfUP_GM.Pages
                 }
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Static.user!=null && RewiewList.ItemsSource !=null)
+            {
+                var orderWindow = new AddRewiew();
+                orderWindow.Owner = Window.GetWindow(this);
+                bool? dialogResult = orderWindow.ShowDialog();
+                if (dialogResult == true && orderWindow.IsConfirmed)
+                {
+
+                    string RewText = orderWindow.RewiewSting;
+                    double Rating = orderWindow.RatingFilm;
+                    Rewiew rep = new Rewiew()
+                    {
+                        UserID = Static.user.id,
+                        Text = RewText,
+                        BookID = Static.ChoosingBook.id,
+                        Rating = Rating
+                    };
+                    Core.GMEntities.Rewiew.Add(rep);
+                    MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
     }
 }

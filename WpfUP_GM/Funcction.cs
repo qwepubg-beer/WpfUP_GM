@@ -8,6 +8,11 @@ namespace WpfUP_GM
 {
     public class Funcction
     {
+        static int CountRewiew(Book book)
+        {
+            List<Rewiew> list = Core.GMEntities.Rewiew.Where(a=>a.BookID==book.id).ToList();    
+            return list.Count;
+        }
         static public bool Enter(string login, string password)
         {
             if (!string.IsNullOrWhiteSpace(login) || !string.IsNullOrWhiteSpace(password))
