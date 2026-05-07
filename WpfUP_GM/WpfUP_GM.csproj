@@ -109,8 +109,14 @@
     <Compile Include="Pages\AdminListOfBid.xaml.cs">
       <DependentUpon>AdminListOfBid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminListOfBook.xaml.cs">
+      <DependentUpon>AdminListOfBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AdminListOfReport.xaml.cs">
       <DependentUpon>AdminListOfReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminListOfRewiew.xaml.cs">
+      <DependentUpon>AdminListOfRewiew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminListOfUser.xaml.cs">
       <DependentUpon>AdminListOfUser.xaml</DependentUpon>
@@ -198,7 +204,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AdminListOfBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AdminListOfReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdminListOfRewiew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
