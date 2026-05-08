@@ -23,6 +23,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="8" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AutorButton" Content="Изменить" Click="Button_Click_2"  Grid.Column="0" Margin="5" Visibility="Hidden"/>
+        </Grid>
         <Grid Grid.Column="1" Grid.Row="8" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -30,11 +37,11 @@
             </Grid.ColumnDefinitions>
             <Button  Content="Пожаловаться" Click="Button_Click" Grid.Column="0" Margin="5"/>
             <Button  Content="Добавить" Click="Button_Click_1" Grid.Column="1" Margin="5"/>
-        </Grid>
-        <Image Grid.RowSpan="3" Source="{Binding Cover}"/>
-        <TextBlock Grid.Row="4"  Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
-        <TextBlock Grid.Row="5"  Text="{Binding Name}" TextWrapping="Wrap"/>
-        <TextBlock Grid.Row="6"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+        </Grid> 
+        <Image Grid.RowSpan="3" Source="{Binding Cover}" Margin="5"/>
+        <TextBox Name="Autor" Grid.Row="3"  Text="{Binding User.Name, StringFormat=Автор: {0}}" IsReadOnly="True" Margin="5"/>
+        <TextBox Name="BookName" Grid.Row="4"  Text="{Binding Name}" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
+        <TextBox Grid.Row="5"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}" IsReadOnly="True" Margin="5"/>
         <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

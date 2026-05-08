@@ -25,6 +25,7 @@ namespace WpfUP_GM.Pages
             InitializeComponent();
             DataContext = Static.ChoosingBook;
             LoadRewiew();
+            LoadPage();
         }
         private void LoadRewiew()
         {
@@ -53,7 +54,15 @@ namespace WpfUP_GM.Pages
                 }
             }
         }
-
+        private void LoadPage()
+        {
+            if (Static.user.RoleID == 2)
+            {
+                Autor.IsReadOnly = false;
+                BookName.IsReadOnly = false;
+                AutorButton.Visibility= Visibility.Visible;
+            }
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (Static.user!=null && RewiewList.ItemsSource !=null)
@@ -77,6 +86,11 @@ namespace WpfUP_GM.Pages
                     MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
