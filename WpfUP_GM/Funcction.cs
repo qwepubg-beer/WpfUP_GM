@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfUP_GM
 {
@@ -27,10 +28,11 @@ namespace WpfUP_GM
                     }
                     else
                     {
+                        MessageBox.Show("2");
                         return false;
                     }
                 }
-                else { return false; }
+                else {return false; }
             }
             else
             {

@@ -32,10 +32,10 @@ namespace WpfUP_GM
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int RoleID { get; set; }
-        public int ReturnRoleID(int roleID)
-        { 
-            Role role = Core.GMEntities.Role.Find(roleID);
-            return role!=null?roleID:this.RoleID;
+        public int ReturnRoleID()
+        {
+            Role role = Core.GMEntities.Role.Find(RoleID);
+            return role != null? role.id : 1;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

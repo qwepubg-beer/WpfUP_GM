@@ -55,7 +55,7 @@ namespace WpfUP_GM.Pages
                                 login = user.login,
                                 password = user.password,
                                 IsActive = user.IsActive,
-                                RoleID = user.ReturnRoleID(user.RoleID)
+                                RoleID = user.ReturnRoleID()
                             };
                             Core.GMEntities.User.Add(newProduct);
                         }
@@ -68,7 +68,7 @@ namespace WpfUP_GM.Pages
                                 existingUser.login = user.login;
                                 existingUser.password = user.password;
                                 existingUser.IsActive = user.IsActive;
-                                existingUser.RoleID = user.ReturnRoleID(user.RoleID);
+                                existingUser.RoleID = user.ReturnRoleID();
                             }
                         }
                     }

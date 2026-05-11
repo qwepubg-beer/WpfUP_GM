@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using static WpfUP_GM.Funcction;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
@@ -56,16 +56,20 @@ namespace WpfUP_GM.Pages
         }
         private void LoadPage()
         {
-            if (Static.user.RoleID == 2)
+            if(IsReg())
+            {
+                if (Static.user.RoleID == 2)
             {
                 Autor.IsReadOnly = false;
                 BookName.IsReadOnly = false;
                 AutorButton.Visibility= Visibility.Visible;
             }
+            }
+
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Static.user!=null && RewiewList.ItemsSource !=null)
+            if (IsReg() && RewiewList.ItemsSource !=null)
             {
                 var orderWindow = new AddRewiew();
                 orderWindow.Owner = Window.GetWindow(this);
@@ -90,7 +94,15 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            // изменить книгу для автора
+        }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if(IsReg())
+            {
+                //add book to list of book
+            }
         }
     }
 }

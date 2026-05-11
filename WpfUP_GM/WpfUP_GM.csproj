@@ -78,17 +78,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Core.cs" />
-    <Compile Include="FreezeWindow.xaml.cs">
-      <DependentUpon>FreezeWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Funcction.cs" />
     <Compile Include="Genre.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="GenreBook.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="GenreClass.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +99,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Report.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rewiew.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeBid.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeBookList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FreezeWindow.xaml.cs">
+      <DependentUpon>FreezeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Funcction.cs" />
+    <Compile Include="GenreClass.cs" />
     <Compile Include="Pages\AccInfoPage.xaml.cs">
       <DependentUpon>AccInfoPage.xaml</DependentUpon>
     </Compile>
@@ -158,39 +179,18 @@
     <Compile Include="Pages\Regestaration.xaml.cs">
       <DependentUpon>Regestaration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Report.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Rewiew.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RewiewWindow.xaml.cs">
+    <Compile Include="Windows\RewiewWindow.xaml.cs">
       <DependentUpon>RewiewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Role.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Static.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TypeBid.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TypeBookList.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WindowChoseGenre.xaml.cs">
+    <Compile Include="Windows\WindowChoseGenre.xaml.cs">
       <DependentUpon>WindowChoseGenre.xaml</DependentUpon>
     </Compile>
     <Page Include="AddRewiew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FreezeWindow.xaml">
+    <Page Include="Windows\FreezeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,11 +278,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RewiewWindow.xaml">
+    <Page Include="Windows\RewiewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowChoseGenre.xaml">
+    <Page Include="Windows\WindowChoseGenre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -331,6 +331,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\acc.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

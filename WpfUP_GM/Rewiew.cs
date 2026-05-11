@@ -25,6 +25,7 @@ namespace WpfUP_GM
         public double Rating { get; set; }
         public string Text { get; set; }
         public int BookID { get; set; }
+        public Nullable<System.DateTime> RewiewDate { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

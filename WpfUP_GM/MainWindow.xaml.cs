@@ -46,6 +46,10 @@ namespace WpfUP_GM
             {
                 MainFrame.NavigationService.Navigate(new AccInfoPage());
             }
+            else
+            {
+                MainFrame.NavigationService.Navigate(new Enter());
+            }
         }
 
         private void Block_Click(object sender, RoutedEventArgs e)

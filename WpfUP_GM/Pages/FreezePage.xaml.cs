@@ -40,10 +40,9 @@ namespace WpfUP_GM.Pages
                         UserID = Static.user.id,
                         Text = RewText,
                         TypeBid=1,
-                        UserID= Static.user.id,
-                        IsCompleted==false,
+                        IsCompleted = false,
                     };
-                    Core.GMEntities.Report.Add(rep);
+                    Core.GMEntities.Bid.Add(rep);
                     MessageBox.Show($"Жалоба отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }

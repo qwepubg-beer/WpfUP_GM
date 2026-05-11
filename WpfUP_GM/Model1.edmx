@@ -91,6 +91,7 @@
           <Property Name="Rating" Type="float" Nullable="false" />
           <Property Name="Text" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="RewiewDate" Type="date" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -509,6 +510,7 @@
           <Property Name="Rating" Type="Double" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="RewiewDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Rewiew_Book" FromRole="Rewiew" ToRole="Book" />
           <NavigationProperty Name="User" Relationship="Self.FK_Rewiew_User" FromRole="Rewiew" ToRole="User" />
           <NavigationProperty Name="Report" Relationship="Self.ReportRewiew" FromRole="Rewiew" ToRole="Report" />
@@ -856,6 +858,7 @@
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="RewiewDate" ColumnName="RewiewDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -28,13 +28,13 @@
             <TextBlock Grid.Row="1" Text="Вход в систему" FontSize="24" HorizontalAlignment="Center"></TextBlock>
             <StackPanel Grid.Row="2" Grid.RowSpan="3">
                 <TextBlock HorizontalAlignment="Left" Text="Логин" Padding="5" FontSize="16"/>
-                <PasswordBox  Padding="5" MinHeight="40"/>
+                <TextBox Name="log"  Padding="5" MinHeight="40"/>
                 <TextBlock  HorizontalAlignment="Left" Text="Пароль" Padding="5" FontSize="16"/>
-                <PasswordBox Padding="5" MinHeight="40"/>
+                <PasswordBox  Name="pasw" Padding="5" MinHeight="40"/>
             </StackPanel>
-            <Button Grid.Row="5" Content="Войти"/>
+            <Button Grid.Row="5" Content="Войти" Click="Button_Click"/>
             <TextBlock  Grid.Row="6" Text="Регистрация" FontSize="16" TextDecorations="Underline">
-              <Hyperlink/>
+              <Hyperlink Click="Hyperlink_Click"/>
             </TextBlock>
         </Grid>
 

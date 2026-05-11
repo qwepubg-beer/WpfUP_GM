@@ -28,14 +28,14 @@
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel HorizontalAlignment="Center">
-                        <Image Height="100" Width="160"  Source="{Binding Cover}"/>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <Image Height="160" Width="90"  Source="{Binding Cover}"/>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
                             <TextBlock Padding="5" Text="{Binding Name}" TextWrapping="Wrap"/>
                             <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+                            <Button Height="40" Content="Информация" Click="Button_Click_2"></Button>
                         </StackPanel>
-                        <Button Height="40" Content="Информация" Click="Button_Click_2"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

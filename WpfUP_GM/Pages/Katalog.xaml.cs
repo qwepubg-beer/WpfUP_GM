@@ -44,8 +44,11 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Static.ChoosingBook= ProductList.SelectedItem as Book;
-            mainWindow.MainFrame.NavigationService.Navigate(new BookInfo());
+            if (ProductList.SelectedItem != null)
+            {
+                Static.ChoosingBook = ProductList.SelectedItem as Book;
+                mainWindow.MainFrame.NavigationService.Navigate(new BookInfo());
+            }
         }
         private void GenreComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

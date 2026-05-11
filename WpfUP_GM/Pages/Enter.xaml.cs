@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using static WpfUP_GM.Funcction;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
@@ -20,9 +20,27 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class Enter : Page
     {
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         public Enter()
         {
             InitializeComponent();
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindow.MainFrame.NavigationService.Navigate(new Regestaration());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(Funcction.Enter(log.Text,pasw.Password))
+            {
+                mainWindow.MainFrame.NavigationService.Navigate(new Katalog());
+            }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль");
+            }
         }
     }
 }
