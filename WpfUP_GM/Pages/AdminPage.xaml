@@ -27,13 +27,14 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Margin="5" Content="Список жалоб"></Button>
-        <Button Grid.Column="1" Margin="5" Content="Заморозки"></Button>
-        <Button Grid.Column="2" Margin="5" Content="Заявка на роль автора"></Button>
+        <Button Name="ListOfReport" Margin="5" Content="Список жалоб" Click="ListOfReport_Click"></Button>
+        <Button Name="Frezze" Grid.Column="1" Margin="5" Content="Заморозки" Click="Frezze_Click"></Button>
+        <Button Name="BidAuthor" Grid.Column="2" Margin="5" Content="Заявка на роль автора" Click="BidAuthor_Click"></Button>
         <ComboBox Grid.Column="3" x:Name="TypeListComboBox"  IsEditable="True"  SelectedIndex="0">
             <ComboBoxItem Content="Список пользователей"> </ComboBoxItem>
             <ComboBoxItem Content="Список книг"></ComboBoxItem>
             <ComboBoxItem Content="Список отзывов"></ComboBoxItem>
         </ComboBox>
+        <Frame x:Name="AutorFrame" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="8"></Frame>
     </Grid>
 </Page>

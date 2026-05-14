@@ -104,5 +104,10 @@ namespace WpfUP_GM.Pages
                 //add book to list of book
             }
         }
+
+        private void ReportAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            // репорт на автора
+        }
     }
 }

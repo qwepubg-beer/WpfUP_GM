@@ -24,5 +24,19 @@ namespace WpfUP_GM.Pages
         {
             InitializeComponent();
         }
+        private void ListOfReport_Click(object sender, RoutedEventArgs e)
+        {
+            AutorFrame.NavigationService.Navigate(new AdminListOfReport());
+        }
+
+        private void Frezze_Click(object sender, RoutedEventArgs e)
+        {
+            AutorFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u=>u.BidName=="заявка на разморозку")));
+        }
+
+        private void BidAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            AutorFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u => u.BidName == "заявка на автора")));
+        }
     }
 }
