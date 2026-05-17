@@ -39,11 +39,11 @@ namespace WpfUP_GM.Pages
                     {
                         UserID = Static.user.id,
                         Text = RewText,
-                        TypeBid=1,
+                        TypeBid=2,
                         IsCompleted = false,
                     };
                     Core.GMEntities.Bid.Add(rep);
-                    MessageBox.Show($"Жалоба отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Заявка на разморозку отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }

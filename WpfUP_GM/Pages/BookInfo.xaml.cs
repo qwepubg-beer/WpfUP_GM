@@ -69,7 +69,7 @@ namespace WpfUP_GM.Pages
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (IsReg() && RewiewList.ItemsSource !=null)
+            if (IsReg())
             {
                 var orderWindow = new AddRewiew();
                 orderWindow.Owner = Window.GetWindow(this);
@@ -114,7 +114,24 @@ namespace WpfUP_GM.Pages
 
         private void ReportAuthor_Click(object sender, RoutedEventArgs e)
         {
-            // репорт на автора
+            if (IsReg())
+            {
+                var orderWindow = new RewiewWindow();
+                orderWindow.Owner = Window.GetWindow(this);
+                bool? dialogResult = orderWindow.ShowDialog();
+                if (dialogResult == true && orderWindow.IsConfirmed)
+                {
+                    string RewText = orderWindow.RewiewSting;  
+                    Report rep = new Report()
+                    {
+                        UserID = Static.user.id,
+                        Text = RewText,
+                        User1 = Static.ChoosingBook.User,
+                    };
+                    Core.GMEntities.Report.Add(rep);
+                    MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
     }
 }

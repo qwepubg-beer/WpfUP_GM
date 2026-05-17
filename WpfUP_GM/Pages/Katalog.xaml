@@ -45,14 +45,12 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
-            <ComboBox x:Name="GenreComboBox" Width="180" Grid.Column="1" Height="40" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
-            <ComboBox x:Name="TypeComboBox" Width="180" Grid.Column="2" Height="40"  DisplayMemberPath="Name" SelectedValuePath="Id" IsEditable="True" Margin="5" SelectionChanged="TypeComboBox_SelectionChanged">
+        <ComboBox x:Name="GenreComboBox" Width="160" Grid.Column="3" Height="40" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
+        <ComboBox x:Name="TypeComboBox" Width="160" Grid.Column="2" Height="40"  DisplayMemberPath="Name" SelectedValuePath="Id" IsEditable="True" Margin="5" SelectionChanged="TypeComboBox_SelectionChanged">
             <ComboBoxItem Content="По рейтингу возрастание"></ComboBoxItem>
             <ComboBoxItem Content="По рейтингу убывание"></ComboBoxItem>
             <ComboBoxItem Content="По имени"></ComboBoxItem>
         </ComboBox>
-        </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal">
             <Button Content="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" MaxWidth="200" MaxHeight="60" Click="Button_Click_1"/>
             <Button Content="Сброс" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" MaxWidth="200" MaxHeight="60" Margin="10,0,0,0" Click="Button_Click" />

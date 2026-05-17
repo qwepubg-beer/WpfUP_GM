@@ -82,7 +82,7 @@ namespace WpfUP_GM
                         {
                             UserID = Static.user.id,
                             Text = RewText,
-                            TypeBid = 2,
+                            TypeBid = 1,
                             IsCompleted = false,
                         };
                         Core.GMEntities.Bid.Add(rep);
