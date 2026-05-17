@@ -101,7 +101,14 @@ namespace WpfUP_GM.Pages
         {
             if(IsReg())
             {
-                //add book to list of book
+                BookInList editlist = new BookInList
+                {
+                    BookID = Static.ChoosingBook.id,
+                    UserID = Static.user.id,
+                    TypeListID =1,
+                    ListID =1
+                };
+               Core.GMEntities.BookInList.Add(editlist);
             }
         }
 
