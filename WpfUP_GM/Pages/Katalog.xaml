@@ -31,9 +31,9 @@
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                         <Image Height="120" Width="90"  Source="{Binding Cover}"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
-                            <TextBlock Padding="5" Text="{Binding Name}" TextWrapping="Wrap"/>
-                            <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+                            <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
                             <Button Height="40" Content="Информация" Click="Button_Click_2"></Button>
                         </StackPanel>
                     </StackPanel>
@@ -46,7 +46,7 @@
             </ListBox.ItemsPanel>
         </ListBox>
         <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
-            <ComboBox x:Name="GenreComboBox" Width="180" Grid.Column="1" Height="40" IsEditable="True" DisplayMemberPath="Name" SelectedValuePath="Id" Margin="5" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
+            <ComboBox x:Name="GenreComboBox" Width="180" Grid.Column="1" Height="40" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
             <ComboBox x:Name="TypeComboBox" Width="180" Grid.Column="2" Height="40"  DisplayMemberPath="Name" SelectedValuePath="Id" IsEditable="True" Margin="5" SelectionChanged="TypeComboBox_SelectionChanged">
             <ComboBoxItem Content="По рейтингу возрастание"></ComboBoxItem>
             <ComboBoxItem Content="По рейтингу убывание"></ComboBoxItem>

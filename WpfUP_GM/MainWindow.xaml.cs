@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfUP_GM.Pages;
-
+using static WpfUP_GM.Funcction;
 namespace WpfUP_GM
 {
     /// <summary>
@@ -57,6 +57,39 @@ namespace WpfUP_GM
             if (Static.user != null)
             {
                 MainFrame.NavigationService.Navigate(new FreezePage());
+            }
+        }
+
+        private void Author_Click(object sender, RoutedEventArgs e)
+        {   
+            if(IsReg())
+            { 
+            if (Static.user.RoleID == 2)
+            {
+                MainFrame.NavigationService.Navigate(new AuthorPage());
+            }
+            else
+            {
+                if (Static.user != null)
+                {
+                    var orderWindow = new FreezeWindow();
+                    orderWindow.Owner = Window.GetWindow(this);
+                    bool? dialogResult = orderWindow.ShowDialog();
+                    if (dialogResult == true && orderWindow.IsConfirmed)
+                    {
+                        string RewText = orderWindow.TextFr;
+                        Bid rep = new Bid()
+                        {
+                            UserID = Static.user.id,
+                            Text = RewText,
+                            TypeBid = 2,
+                            IsCompleted = false,
+                        };
+                        Core.GMEntities.Bid.Add(rep);
+                        MessageBox.Show($"Заявка на автора отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
             }
         }
     }

@@ -333,6 +333,9 @@
     <Resource Include="Images\acc.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\author.png" />
+    <Resource Include="Images\images.png" />
+    <Resource Include="Images\freeze.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
