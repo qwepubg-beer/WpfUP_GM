@@ -28,7 +28,7 @@
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Center">
                         <Image Height="120" Width="90"  Source="{Binding Cover}"/>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>

@@ -9,7 +9,6 @@ namespace WpfUP_GM
     public class Static
     {
         public static User user=null;
-        public static Book ChoosingBook = null;
     }
 }
  

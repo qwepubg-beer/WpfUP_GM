@@ -120,6 +120,9 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EditBookWindow.xaml.cs">
+      <DependentUpon>EditBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FreezeWindow.xaml.cs">
       <DependentUpon>FreezeWindow.xaml</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
       <DependentUpon>WindowChoseGenre.xaml</DependentUpon>
     </Compile>
     <Page Include="AddRewiew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

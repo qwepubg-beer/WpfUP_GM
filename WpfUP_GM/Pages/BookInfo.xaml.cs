@@ -20,16 +20,19 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class BookInfo : Page
     {
-        public BookInfo()
+        Book Book { get; set; }
+        public BookInfo(Book book)
         {
             InitializeComponent();
-            DataContext = Static.ChoosingBook;
+            this.Book = book;
+            DataContext = Book;
             LoadRewiew();
             LoadPage();
+            Book = book;
         }
         private void LoadRewiew()
         {
-            RewiewList.ItemsSource=Core.GMEntities.Rewiew.Where(a =>a.BookID== Static.ChoosingBook.id).ToList();
+            RewiewList.ItemsSource=Core.GMEntities.Rewiew.Where(a =>a.BookID== Book.id).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -83,7 +86,7 @@ namespace WpfUP_GM.Pages
                     {
                         UserID = Static.user.id,
                         Text = RewText,
-                        BookID = Static.ChoosingBook.id,
+                        BookID = Book.id,
                         Rating = Rating
                     };
                     Core.GMEntities.Rewiew.Add(rep);
@@ -103,7 +106,7 @@ namespace WpfUP_GM.Pages
             {
                 BookInList editlist = new BookInList
                 {
-                    BookID = Static.ChoosingBook.id,
+                    BookID = Book.id,
                     UserID = Static.user.id,
                     TypeListID =1,
                     ListID =1
@@ -126,7 +129,7 @@ namespace WpfUP_GM.Pages
                     {
                         UserID = Static.user.id,
                         Text = RewText,
-                        User1 = Static.ChoosingBook.User,
+                        User1 = Book.User,
                     };
                     Core.GMEntities.Report.Add(rep);
                     MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);

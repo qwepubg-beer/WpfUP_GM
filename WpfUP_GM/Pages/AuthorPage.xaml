@@ -29,5 +29,6 @@
         </Grid.ColumnDefinitions>
         <Button Margin="5" Content="Мои книги"></Button>
         <Button Grid.Column="1" Margin="5" Content="Добавить книгу"></Button>
+        <Button Grid.Column="2" Margin="5" Content="Жалобы"></Button>
     </Grid>
 </Page>

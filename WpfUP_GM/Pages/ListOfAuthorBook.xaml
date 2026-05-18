@@ -20,11 +20,11 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Center">
-                        <Image Height="100" Width="160"  Source="{Binding Cover}"/>
+                        <Image Height="120" Width="90"  Source="{Binding Cover}"/>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Padding="5" Text="{Binding Book.Name}" TextWrapping="Wrap"/>
+                            <Button Name="Read" Height="40" Content="Изменить" Margin="5" Click="Read_Click"></Button>
                         </StackPanel>
-                        <Button Name="Read" Height="40" Content="Изменить" Margin="5" Click="Read_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

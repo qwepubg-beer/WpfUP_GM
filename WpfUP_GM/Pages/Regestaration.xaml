@@ -36,6 +36,5 @@
             </StackPanel>
             <Button Grid.Row="6" Content="Зарегистрироваться"/>
         </Grid>
-
     </Grid>
 </Page>

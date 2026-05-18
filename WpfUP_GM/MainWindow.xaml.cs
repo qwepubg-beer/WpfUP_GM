@@ -16,9 +16,6 @@ using WpfUP_GM.Pages;
 using static WpfUP_GM.Funcction;
 namespace WpfUP_GM
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -42,7 +39,7 @@ namespace WpfUP_GM
 
         private void Account_Click(object sender, RoutedEventArgs e)
         {
-            if (Static.user != null) 
+            if (IsReg()) 
             {
                 MainFrame.NavigationService.Navigate(new AccInfoPage());
             }
@@ -54,7 +51,7 @@ namespace WpfUP_GM
 
         private void Block_Click(object sender, RoutedEventArgs e)
         {
-            if (Static.user != null)
+            if (IsReg())
             {
                 MainFrame.NavigationService.Navigate(new FreezePage());
             }
