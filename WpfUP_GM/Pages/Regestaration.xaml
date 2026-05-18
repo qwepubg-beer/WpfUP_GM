@@ -34,7 +34,7 @@
                 <TextBlock  HorizontalAlignment="Left" Text="Пароль" Padding="5" FontSize="16"/>
                 <PasswordBox Padding="5" MinHeight="40"/>
             </StackPanel>
-            <Button Grid.Row="6" Content="Зарегистрироваться"/>
+            <Button Grid.Row="6" Content="Зарегистрироваться" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Page>

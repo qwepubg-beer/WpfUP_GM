@@ -25,12 +25,6 @@ namespace WpfUP_GM.Pages
         {
             InitializeComponent();
         }
-
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-            mainWindow.MainFrame.NavigationService.Navigate(new Regestaration());
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(Funcction.Enter(log.Text,pasw.Password))
@@ -41,6 +35,11 @@ namespace WpfUP_GM.Pages
             {
                 MessageBox.Show("Неправильный логин или пароль");
             }
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mainWindow.MainFrame.NavigationService.Navigate(new Regestaration());
         }
     }
 }

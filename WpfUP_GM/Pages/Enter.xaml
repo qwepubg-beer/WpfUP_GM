@@ -33,9 +33,7 @@
                 <PasswordBox  Name="pasw" Padding="5" MinHeight="40"/>
             </StackPanel>
             <Button Grid.Row="5" Content="Войти" Click="Button_Click"/>
-            <TextBlock  Grid.Row="6" Text="Регистрация" FontSize="16" TextDecorations="Underline">
-              <Hyperlink Click="Hyperlink_Click"/>
-            </TextBlock>
+            <TextBlock  Grid.Row="6" Text="Регистрация" FontSize="16" TextDecorations="Underline" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"/>
         </Grid>
 
     </Grid>
