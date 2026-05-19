@@ -29,7 +29,7 @@ namespace WpfUP_GM.Pages
         {
             if(Funcction.Enter(log.Text,pasw.Password))
             {
-                mainWindow.MainFrame.NavigationService.Navigate(new Katalog());
+                mainWindow.MainFrame.NavigationService.Navigate(new Katalog(false));
             }
             else
             {

@@ -53,7 +53,9 @@ namespace WpfUP_GM.Pages
                         Rewiew = RewiewList.ItemsSource as Rewiew
                     };
                     Core.GMEntities.Report.Add(rep);
+                    Core.GMEntities.SaveChanges();
                     MessageBox.Show($"Жалоба отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadRewiew();
                 }
             }
         }
@@ -90,7 +92,9 @@ namespace WpfUP_GM.Pages
                         Rating = Rating
                     };
                     Core.GMEntities.Rewiew.Add(rep);
-                    MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Core.GMEntities.SaveChanges();
+                    MessageBox.Show($"Отзыв отправлен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadRewiew();
                 }
             }
         }
@@ -112,6 +116,7 @@ namespace WpfUP_GM.Pages
                     ListID =1
                 };
                Core.GMEntities.BookInList.Add(editlist);
+               Core.GMEntities.SaveChanges();
             }
         }
 
@@ -132,6 +137,7 @@ namespace WpfUP_GM.Pages
                         User1 = Book.User,
                     };
                     Core.GMEntities.Report.Add(rep);
+                    Core.GMEntities.SaveChanges();
                     MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }

@@ -26,17 +26,34 @@ namespace WpfUP_GM.Pages
         }
         private void ListOfReport_Click(object sender, RoutedEventArgs e)
         {
-            AutorFrame.NavigationService.Navigate(new AdminListOfReport());
+            AdminFrame.NavigationService.Navigate(new AdminListOfReport(true));
         }
 
         private void Frezze_Click(object sender, RoutedEventArgs e)
         {
-            AutorFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u=>u.BidName=="заявка на разморозку")));
+            AdminFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u=>u.BidName != "Получение роль автор")));
         }
 
         private void BidAuthor_Click(object sender, RoutedEventArgs e)
         {
-            AutorFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u => u.BidName == "заявка на автора")));
+            AdminFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u => u.BidName == "Получение роль автор")));
+        }
+
+        private void TypeListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (TypeListComboBox.SelectedIndex)
+            {
+                case 0:
+                    AdminFrame.NavigationService.Navigate(new AdminListOfUser());
+                    break;
+                case 1:
+                    AdminFrame.NavigationService.Navigate(new AdminListOfBook());
+                    break;
+                case 2:
+                    AdminFrame.NavigationService.Navigate(new AdminListOfRewiew());
+                    break;
+            }
+
         }
     }
 }

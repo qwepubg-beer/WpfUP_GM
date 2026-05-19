@@ -21,7 +21,7 @@ namespace WpfUP_GM
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.NavigationService.Navigate(new Katalog());
+            MainFrame.NavigationService.Navigate(new Katalog(false));
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -34,7 +34,7 @@ namespace WpfUP_GM
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.NavigationService.Navigate(new Katalog());
+            MainFrame.NavigationService.Navigate(new Katalog(false));
         }
 
         private void Account_Click(object sender, RoutedEventArgs e)

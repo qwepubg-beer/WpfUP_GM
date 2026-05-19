@@ -21,10 +21,10 @@ namespace WpfUP_GM.Pages
     public partial class Katalog : Page
     {
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-        public Katalog()
+        public Katalog(bool avtor)
         {
             InitializeComponent();
-            ProductList.ItemsSource = Core.GMEntities.Book.ToList();
+            ProductList.ItemsSource = avtor ? Core.GMEntities.Book.Where(y=> y.Author==Static.user.id).ToList() : Core.GMEntities.Book.ToList();
             GenreComboBox.ItemsSource = Core.GMEntities.Genre.ToList();
         }
 
@@ -46,8 +46,7 @@ namespace WpfUP_GM.Pages
         {
             if (ProductList.SelectedItem != null)
             {
-                Static.ChoosingBook = ProductList.SelectedItem as Book;
-                mainWindow.MainFrame.NavigationService.Navigate(new BookInfo());
+                mainWindow.MainFrame.NavigationService.Navigate(new BookInfo(ProductList.SelectedItem as Book));
             }
         }
         private void GenreComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -24,5 +24,16 @@ namespace WpfUP_GM.Pages
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Authorframe.NavigationService.Navigate(new Katalog(true));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Authorframe.NavigationService.Navigate(new AdminListOfReport(false));
+
+        }
     }
 }

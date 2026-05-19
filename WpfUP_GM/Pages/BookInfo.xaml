@@ -54,9 +54,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Пользователь: {0}%}"/>
-                        <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding User.Name, StringFormat=Пользователь: {0}}"/>
+                        <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
