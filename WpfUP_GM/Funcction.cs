@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -9,16 +10,16 @@ namespace WpfUP_GM
 {
     public class Funcction
     {
-        static int CountRewiew(Book book)
+        static double Rewiew(Book book,double Rating)
         {
-            List<Rewiew> list = Core.GMEntities.Rewiew.Where(a=>a.BookID==book.id).ToList();    
-            return list.Count;
+            int count = Core.GMEntities.Rewiew.Where(a => a.BookID == book.id).Count();
+            return book.Rating+Rating/(count+1);
         }
         static public bool Enter(string login, string password)
         {
             if (!string.IsNullOrWhiteSpace(login) || !string.IsNullOrWhiteSpace(password))
             {
-                User editUser = Core.GMEntities.User.FirstOrDefault(u => u.login == login);
+                User editUser = Core.GMEntities.User.FirstOrDefault(u => u.login == login || u.email==login);
                 if (editUser != null)
                 {
                     if (editUser.password == password)
@@ -28,7 +29,6 @@ namespace WpfUP_GM
                     }
                     else
                     {
-                        MessageBox.Show("2");
                         return false;
                     }
                 }
@@ -39,14 +39,32 @@ namespace WpfUP_GM
                 return false;
             }
         }
-        static public bool Reg(User person)
+        static public bool Reg(string login, string email, string name, string password)
         {
-            if (!string.IsNullOrEmpty(person.login) && !string.IsNullOrEmpty(person.password) && !string.IsNullOrEmpty(person.Name))
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(name) && Emailvalidation(email))
             {
-                return true;
+                User editUser = Core.GMEntities.User.FirstOrDefault(u => u.login == login || u.email == email);
+                if (editUser != null)
+                {
+                    User newuser = new User
+                    {
+                        login = login,
+                        email = email,
+                        password = password,
+                        Name = name,
+                        IsActive = true,
+                        RoleID=1
+                    };
+                    Core.GMEntities.User.Add(newuser);
+                    Static.user = newuser;
+                    return true;
+                }
+                else { MessageBox.Show("Вы уже зарегистрированы!"); return false; }
+                 
             }
             else
             {
+                MessageBox.Show("Заполните поля!");
                 return false;
             }
         }
@@ -60,6 +78,11 @@ namespace WpfUP_GM
             {
                 return false;
             }
+        }
+        private static bool Emailvalidation(string email)
+        {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, emailPattern);
         }
     }
 }

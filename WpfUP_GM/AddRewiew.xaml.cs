@@ -41,7 +41,7 @@ namespace WpfUP_GM
         }
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            RatingFilm=Rating.Value;
+            RatingFilm= Math.Round(Rating.Value, 0);
             RatingText.Text =$"Рейтинг:{RatingFilm}";
         }
     }

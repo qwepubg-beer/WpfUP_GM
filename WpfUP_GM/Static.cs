@@ -10,7 +10,6 @@ namespace WpfUP_GM
     {
         public static User user=null;
     }
-    //регистрация + изменеие функций
     //лист заявок для админа
     // изменить книгу для автора bookinfo
     // authorpage navigation

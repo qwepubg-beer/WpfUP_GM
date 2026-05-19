@@ -26,15 +26,17 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Регистрация" FontSize="24" HorizontalAlignment="Center"></TextBlock>
-            <StackPanel Grid.Row="1" Grid.RowSpan="5">
+            <StackPanel Grid.Row="1" Grid.RowSpan="7">
                 <TextBlock HorizontalAlignment="Left" Text="E-mail" Padding="5" FontSize="16"/>
-                <PasswordBox  Padding="5" MinHeight="40"/>
+                <TextBox x:Name="Email" Margin="5" MinHeight="40"/>
                 <TextBlock HorizontalAlignment="Left" Text="Логин" Padding="5" FontSize="16"/>
-                <PasswordBox  Padding="5" MinHeight="40"/>
+                <TextBox Name="login" Margin="5" MinHeight="40"/>
+                <TextBlock  HorizontalAlignment="Left" Text="Имя" Padding="5" FontSize="16"/>
+                <TextBox Name="name" Margin="5" MinHeight="40"/>
                 <TextBlock  HorizontalAlignment="Left" Text="Пароль" Padding="5" FontSize="16"/>
-                <PasswordBox Padding="5" MinHeight="40"/>
+                <PasswordBox  Name="password" Margin="5" MinHeight="40"/>
+                <Button Height="40" Content="Зарегистрироваться" Click="Button_Click" Margin="5"/>
             </StackPanel>
-            <Button Grid.Row="6" Content="Зарегистрироваться" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Page>

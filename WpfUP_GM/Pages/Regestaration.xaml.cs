@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using static System.Net.Mime.MediaTypeNames;
+using static WpfUP_GM.Funcction;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
@@ -27,7 +28,10 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //доделать регистрацию
+            if (Reg(login.Text, Email.Text, name.Text, password.Password))
+            {
+                MessageBox.Show("Вы зарегистрированы");
+            }
         }
     }
 }
