@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,13 +24,30 @@ namespace WpfUP_GM.Pages
         public AdminListOfBid(TypeBid bidtype)
         {
             InitializeComponent();
-            //сделать проверку на тип switch
-            BidList.ItemsSource = Core.GMEntities.Bid.ToList();
+            BidList.ItemsSource = Core.GMEntities.Bid.Where(a => a.TypeBid1 == bidtype).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (BidList.SelectedItem != null)
+            {
+                Bid bid = BidList.SelectedItem  as Bid;
+                switch (bid.TypeBid1.BidName)
+                {
+                    case "Получение роль автор":
+                        var result = MessageBox.Show($"Выдать роль автор пользователю {bid.User.login} ", "Предупреждение", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes) { User edituser = Core.GMEntities.User.Find(bid.User.id); edituser.RoleID = 2; Core.GMEntities.SaveChanges();}
+                        break;
+                    case "Разморозка аккаунта":
+                        var result = MessageBox.Show($"Разморозить пользователя {bid.User.login} ", "Предупреждение", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes) { User edituser = Core.GMEntities.User.Find(bid.User.id); edituser.IsActive = true; Core.GMEntities.SaveChanges(); }
+                        break;
+                    case "Разморозка книги"://добавить книгу в bid
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

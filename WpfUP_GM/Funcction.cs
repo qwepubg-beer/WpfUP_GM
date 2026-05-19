@@ -13,7 +13,7 @@ namespace WpfUP_GM
         static double Rewiew(Book book,double Rating)
         {
             int count = Core.GMEntities.Rewiew.Where(a => a.BookID == book.id).Count();
-            return book.Rating+Rating/(count+1);
+            return (book.Rating* count +Rating) / (count+1);
         }
         static public bool Enter(string login, string password)
         {

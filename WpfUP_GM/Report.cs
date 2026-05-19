@@ -17,10 +17,28 @@ namespace WpfUP_GM
         public int id { get; set; }
         public int UserID { get; set; }
         public string Text { get; set; }
+       
     
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }
         public virtual Book Book { get; set; }
         public virtual Rewiew Rewiew { get; set; }
+        public string Type => GetTypeReport();
+
+        public string GetTypeReport()
+        {
+            if(User1 != null)
+            {
+                return $"жалоба на автора {User1.login}";
+            }
+            else if(Book != null)
+            {
+                return $"жалоба на книгу {Book.Name} автора {Book.User.login}";
+            }
+            else
+            {
+                return $"жалоба на отзыв пользователя {Rewiew.User.login}";
+            }
+        }
     }
 }

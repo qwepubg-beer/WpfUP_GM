@@ -20,9 +20,18 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class AdminListOfReport : Page
     {
-        public AdminListOfReport()
+        public AdminListOfReport(bool a)
         {
             InitializeComponent();
+            if (a)
+            {
+                ReportList.ItemsSource = Core.GMEntities.Report.ToList();
+            }
+            else
+            {
+                ReportList.ItemsSource = Core.GMEntities.Report.Where(b=> b.User1==Static.user || b.Book.User== Static.user).ToList();
+            }
+            
         }
     }
 }
