@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static WpfUP_GM.Funcction;
+using static WpfUP_GM.Function;
 namespace WpfUP_GM.Pages
 {
     /// <summary>

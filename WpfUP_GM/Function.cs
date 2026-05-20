@@ -8,18 +8,18 @@ using System.Windows;
 
 namespace WpfUP_GM
 {
-    public class Funcction
+    public class Function
     {
-        public static double Rewiew(Book book,double Rating)
+        public static double Rewiew(Book book, double Rating)
         {
             int count = Core.GMEntities.Rewiew.Where(a => a.BookID == book.id).Count();
-            return (book.Rating* count +Rating) / (count+1);
+            return (book.Rating * count + Rating) / (count + 1);
         }
         static public bool Enter(string login, string password)
         {
             if (!string.IsNullOrWhiteSpace(login) || !string.IsNullOrWhiteSpace(password))
             {
-                User editUser = Core.GMEntities.User.FirstOrDefault(u => u.login == login || u.email==login);
+                User editUser = Core.GMEntities.User.FirstOrDefault(u => u.login == login || u.email == login);
                 if (editUser != null)
                 {
                     if (editUser.password == password)
@@ -32,7 +32,7 @@ namespace WpfUP_GM
                         return false;
                     }
                 }
-                else {return false; }
+                else { return false; }
             }
             else
             {
@@ -53,14 +53,14 @@ namespace WpfUP_GM
                         password = password,
                         Name = name,
                         IsActive = true,
-                        RoleID=1
+                        RoleID = 1
                     };
                     Core.GMEntities.User.Add(newuser);
                     Static.user = newuser;
                     return true;
                 }
                 else { MessageBox.Show("Вы уже зарегистрированы!"); return false; }
-                 
+
             }
             else
             {
