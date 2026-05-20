@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfUP_GM.Windows;
 
 namespace WpfUP_GM.Pages
 {
@@ -34,6 +35,18 @@ namespace WpfUP_GM.Pages
         {
             Authorframe.NavigationService.Navigate(new AdminListOfReport(false));
 
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var bookWindow = new AddChangeBookWindow(book: null, authorId: Static.user.id);
+            bookWindow.Owner = Window.GetWindow(this);
+            bool? result = bookWindow.ShowDialog();
+            if (result == true && bookWindow.IsConfirmed)
+            {
+                MessageBox.Show("Книга успешно добавлена!", "Успех",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

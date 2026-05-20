@@ -35,7 +35,7 @@ namespace WpfUP_GM
         public int ReturnRoleID()
         {
             Role role = Core.GMEntities.Role.Find(RoleID);
-            return role != null? role.id : 1;
+            return role != null ? role.id : 1;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

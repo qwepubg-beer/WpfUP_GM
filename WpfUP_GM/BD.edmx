@@ -14,6 +14,8 @@
           <Property Name="Text" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="BidDate" Type="date" />
+          <Property Name="BookID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Book">
           <Key>
@@ -33,7 +35,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
-          <Property Name="ListID" Type="int" Nullable="false" />
           <Property Name="TypeListID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
@@ -136,6 +137,18 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Bid_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Bid_TypeBid">
           <End Role="TypeBid" Type="Self.TypeBid" Multiplicity="1" />
           <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
@@ -356,6 +369,10 @@
           <EntitySet Name="TypeBid" EntityType="Self.TypeBid" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeBookList" EntityType="Self.TypeBookList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bid_Book" Association="Self.FK_Bid_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
           <AssociationSet Name="FK_Bid_TypeBid" Association="Self.FK_Bid_TypeBid">
             <End Role="TypeBid" EntitySet="TypeBid" />
             <End Role="Bid" EntitySet="Bid" />
@@ -439,6 +456,9 @@
           <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="BidDate" Type="DateTime" Precision="0" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Bid_Book" FromRole="Bid" ToRole="Book" />
           <NavigationProperty Name="TypeBid1" Relationship="Self.FK_Bid_TypeBid" FromRole="Bid" ToRole="TypeBid" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bid_User" FromRole="Bid" ToRole="User" />
         </EntityType>
@@ -453,6 +473,7 @@
           <Property Name="Author" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Rating" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Book" FromRole="Book" ToRole="Bid" />
           <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="Book" ToRole="User" />
           <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Book" FromRole="Book" ToRole="GenreBook" />
           <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_Book" FromRole="Book" ToRole="Rewiew" />
@@ -464,7 +485,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
-          <Property Name="ListID" Type="Int32" Nullable="false" />
           <Property Name="TypeListID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TypeBookList" Relationship="Self.FK_BookInList_TypeBookList" FromRole="BookInList" ToRole="TypeBookList" />
@@ -568,6 +588,18 @@
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Report1" Relationship="Self.ReportAuthor" FromRole="User" ToRole="Report" />
         </EntityType>
+        <Association Name="FK_Bid_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bid">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Bid_TypeBid">
           <End Role="TypeBid" Type="Self.TypeBid" Multiplicity="1" />
           <End Role="Bid" Type="Self.Bid" Multiplicity="*" />
@@ -725,6 +757,10 @@
           <EntitySet Name="TypeBid" EntityType="Self.TypeBid" />
           <EntitySet Name="TypeBookList" EntityType="Self.TypeBookList" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Bid_Book" Association="Self.FK_Bid_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Bid" EntitySet="Bid" />
+          </AssociationSet>
           <AssociationSet Name="FK_Bid_TypeBid" Association="Self.FK_Bid_TypeBid">
             <End Role="TypeBid" EntitySet="TypeBid" />
             <End Role="Bid" EntitySet="Bid" />
@@ -796,6 +832,8 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="BidDate" ColumnName="BidDate" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -817,7 +855,6 @@
               <MappingFragment StoreEntitySet="BookInList">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
-                <ScalarProperty Name="ListID" ColumnName="ListID" />
                 <ScalarProperty Name="TypeListID" ColumnName="TypeListID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>

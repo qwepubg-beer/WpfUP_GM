@@ -19,7 +19,10 @@ namespace WpfUP_GM
         public string Text { get; set; }
         public int UserID { get; set; }
         public bool IsCompleted { get; set; }
+        public Nullable<System.DateTime> BidDate { get; set; }
+        public int BookID { get; set; }
     
+        public virtual Book Book { get; set; }
         public virtual TypeBid TypeBid1 { get; set; }
         public virtual User User { get; set; }
     }

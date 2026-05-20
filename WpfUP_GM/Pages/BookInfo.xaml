@@ -40,10 +40,10 @@
             <Button  Content="Добавить" Click="Button_Click_1" Grid.Column="1" Margin="5"/>
         </Grid> 
         <Image Grid.RowSpan="3" Source="{Binding Cover}" Margin="5"/>
-        <TextBox Name="Autor" Grid.Row="3"  Text="{Binding User.Name, StringFormat=Автор: {0}}" IsReadOnly="True" Margin="5"/>
-        <TextBox Name="BookName" Grid.Row="4"  Text="{Binding Name}" TextWrapping="Wrap" IsReadOnly="True" Margin="5"/>
-        <TextBox Grid.Row="5"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}" IsReadOnly="True" Margin="5"/>
-        <Button Grid.Row="5"  Content="Добавить книгу в список" Click="Button_Click_3" Margin="5"/>
+        <TextBlock Name="Autor" Grid.Row="3"  Text="{Binding User.Name, StringFormat=Автор: {0}}"  Margin="5"/>
+        <TextBlock Name="BookName" Grid.Row="4"  Text="{Binding Name}" TextWrapping="Wrap" Margin="5"/>
+        <TextBlock Grid.Row="5"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}"   Margin="5"/>
+        <Button Grid.Row="6"  Content="Добавить книгу в список" Click="Button_Click_3" Margin="5"/>
         <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">

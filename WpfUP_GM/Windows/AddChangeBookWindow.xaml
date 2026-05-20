@@ -19,18 +19,22 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название" VerticalAlignment="Center" Margin="5" />
-        <TextBox Name="BookName" Grid.Row="0" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Book.Name}" Height="30"></TextBox>
-        <TextBlock Name="RatingText" Text="Содержимое" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center" Margin="5" TextWrapping="Wrap"/>
-        <TextBox Name="BookText" Grid.Row="1" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Book.Text}" Height="80"></TextBox>
-        <TextBlock Text="Обложка" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="5" TextWrapping="Wrap"/>
-        <TextBox Name="BookCover" Grid.Row="2" Grid.Column="2" Margin="5" TextWrapping="Wrap" Text="{Binding Book.Cover}" Height="30"></TextBox>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Название" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Name="BookName" Grid.Row="0" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
+             Text="{Binding Name}" Height="30"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Содержимое" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Name="BookText" Grid.Row="1" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
+             Text="{Binding Text}" Height="80"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Обложка" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Name="BookCover" Grid.Row="2" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
+             Text="{Binding Cover}" Height="30"/>
         <StackPanel Grid.Row="3" Grid.RowSpan="2" Margin="5" VerticalAlignment="Center">
-            <ComboBox x:Name="GenreComboBox" Width="160" Height="40" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5" SelectedIndex="0"></ComboBox>
-            <Button Name="AddGenre" Height="Auto" Content="Добавить" Click="AddGenre_Click"></Button>
+            <ComboBox x:Name="GenreComboBox" Width="160" Height="40" IsEditable="True" 
+                  DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5"/>
+            <Button Name="AddGenre" Height="Auto" Content="Добавить" Click="AddGenre_Click"/>
         </StackPanel>
-        <ListBox x:Name="GenresList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2">
+        <ListBox x:Name="GenresList" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="5"/>
@@ -40,9 +44,9 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{Binding GenreName, StringFormat= Жанр: {0}}"/>
-                            <Button Name="DeleteGenre" Height="30" Content="Удалить" Click="DeleteGenre_Click"></Button>
-                        </StackPanel>
+                        <TextBlock Text="{Binding Genre.GenreName, StringFormat=Жанр: {0}}"/>
+                        <Button Content="Удалить" Height="30" Click="DeleteGenre_Click"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.ItemsPanel>
@@ -51,7 +55,7 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
             <Button Content="Сохранить" Width="80" Margin="5" Click="ConfirmButton_Click"/>
             <Button Content="Отмена" Width="80" Margin="5" Click="CancelButton_Click"/>
         </StackPanel>

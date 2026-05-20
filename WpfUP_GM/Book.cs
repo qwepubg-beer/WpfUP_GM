@@ -17,6 +17,7 @@ namespace WpfUP_GM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
+            this.Bid = new HashSet<Bid>();
             this.GenreBook = new HashSet<GenreBook>();
             this.Rewiew = new HashSet<Rewiew>();
             this.Report = new HashSet<Report>();
@@ -30,6 +31,8 @@ namespace WpfUP_GM
         public bool IsActive { get; set; }
         public double Rating { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bid> Bid { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GenreBook> GenreBook { get; set; }

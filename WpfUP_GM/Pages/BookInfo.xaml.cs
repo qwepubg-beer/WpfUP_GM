@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfUP_GM.Windows;
 using static WpfUP_GM.Funcction;
 namespace WpfUP_GM.Pages
 {
@@ -24,11 +25,14 @@ namespace WpfUP_GM.Pages
         public BookInfo(Book book)
         {
             InitializeComponent();
+            loadBooK(book);
+            LoadRewiew();
+        }
+        void loadBooK(Book book)
+        {
+            LoadPage();
             this.Book = book;
             DataContext = Book;
-            LoadRewiew();
-            LoadPage();
-            Book = book;
         }
         private void LoadRewiew()
         {
@@ -65,8 +69,6 @@ namespace WpfUP_GM.Pages
             {
                 if (Static.user.RoleID == 2)
             {
-                Autor.IsReadOnly = false;
-                BookName.IsReadOnly = false;
                 AutorButton.Visibility= Visibility.Visible;
             }
             }
@@ -103,7 +105,15 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            // изменить книгу для автора
+            var bookWindow = new AddChangeBookWindow(book: Book);
+            bookWindow.Owner = Window.GetWindow(this);
+            bool? result = bookWindow.ShowDialog();
+            if (result == true && bookWindow.IsConfirmed)
+            {
+                loadBooK(Book);
+                MessageBox.Show("Изменения сохранены!", "Успех",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -114,8 +124,7 @@ namespace WpfUP_GM.Pages
                 {
                     BookID = Book.id,
                     UserID = Static.user.id,
-                    TypeListID =1,
-                    ListID =1
+                    TypeListID =1
                 };
                Core.GMEntities.BookInList.Add(editlist);
                Core.GMEntities.SaveChanges();

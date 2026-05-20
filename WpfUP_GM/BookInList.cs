@@ -16,7 +16,6 @@ namespace WpfUP_GM
     {
         public int id { get; set; }
         public int BookID { get; set; }
-        public int ListID { get; set; }
         public int TypeListID { get; set; }
         public int UserID { get; set; }
     
