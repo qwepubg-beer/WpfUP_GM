@@ -65,7 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddRewiew.xaml.cs">
+    <Compile Include="Windows\AddChangeBookWindow.xaml.cs">
+      <DependentUpon>AddChangeBookWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddRewiew.xaml.cs">
       <DependentUpon>AddRewiew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bid.cs">
@@ -189,7 +192,11 @@
     <Compile Include="Windows\WindowChoseGenre.xaml.cs">
       <DependentUpon>WindowChoseGenre.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddRewiew.xaml">
+    <Page Include="Windows\AddChangeBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddRewiew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
