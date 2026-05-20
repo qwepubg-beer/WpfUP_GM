@@ -45,23 +45,11 @@ namespace WpfUP_GM.Windows
             {
                 if (ChangesBook.GenreBook.Contains(g)) 
                 {
-                    GenreBook newgenreBook = new GenreBook()
-                    {
-                        GenreID = GenresList.SelectedIndex,
-                        BookID = ChangesBook.id
-                    };
-                    Core.GMEntities.GenreBook.Add(genreBook);
-                    Core.GMEntities.SaveChanges();
-                    LoadData();
+                    
                 }
                 else
                 {
-                    GenreBook genreBook = Core.GMEntities.GenreBook.FirstOrDefault(a => a.BookID == ChangesBook.id && a.GenreID == genre.id);
-                    if (genreBook != null)
-                    {
-                        Core.GMEntities.GenreBook.Remove(genreBook);
-                        Core.GMEntities.SaveChanges();
-                    }
+                    
                 }
             }
         }
@@ -69,29 +57,29 @@ namespace WpfUP_GM.Windows
         {
             if (GenresList.SelectedItem!=null)
             { 
-               Genre genre= GenresList.SelectedItem as Genre;
-               GenresBook.Remove(genre);
-               GenreBook genreBook = Core.GMEntities.GenreBook.FirstOrDefault(a => a.BookID==ChangesBook.id && a.GenreID==genre.id);
-                if (genreBook!=null) 
+               Genre genre = GenresList.SelectedItem as Genre;
+               GenreBook genreBook = GenresBook.FirstOrDefault(a => a.BookID == ChangesBook.id && a.GenreID == genre.id);
+                if (genreBook != null)
                 {
-                    Core.GMEntities.GenreBook.Remove(genreBook);
-                    Core.GMEntities.SaveChanges();
+                    GenresBook.Remove(genreBook);
                 }
-                LoadData();
             }
         }
 
         private void AddGenre_Click(object sender, RoutedEventArgs e)
         {
-            GenresBook.Add(GenreComboBox.SelectedItem as Genre);
-            GenreBook genreBook = new GenreBook()
+            Genre genre = GenreComboBox.SelectedItem as Genre;
+            GenreBook genreBook = GenresBook.FirstOrDefault(a => a.BookID == ChangesBook.id && a.GenreID == genre.id);
+            if (genreBook == null)
             {
-                GenreID=GenresList.SelectedIndex,
-                BookID=ChangesBook.id
-            };
-            Core.GMEntities.GenreBook.Add(genreBook);
-            Core.GMEntities.SaveChanges();
-            LoadData();
+                GenreBook newgenreBook = new GenreBook()
+                {
+                    id = 0,
+                    GenreID = genre.id,
+                    BookID = ChangesBook.id
+                };
+                GenresBook.Add(newgenreBook);
+            }
         }
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
