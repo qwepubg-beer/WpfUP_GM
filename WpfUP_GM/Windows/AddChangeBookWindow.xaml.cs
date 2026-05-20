@@ -22,7 +22,7 @@ namespace WpfUP_GM.Windows
     {
         public bool IsConfirmed { get; private set; } = false;
         public Book ChangesBook { get; private set;}
-        public ICollection<Genre> GenresBook { get; private set; }
+        public ICollection<GenreBook> GenresBook { get; private set; }
         public AddChangeBookWindow(Book book=null)
         {
             InitializeComponent();
@@ -35,25 +35,33 @@ namespace WpfUP_GM.Windows
         {
             if (ChangesBook!=null)
             {
-                foreach (GenreBook gb in ChangesBook.GenreBook)
-                {
-                    GenresBook.Add(gb.Genre);
-                }
+                GenresBook = ChangesBook.GenreBook;
                 GenresList.ItemsSource=GenresBook;
             }
         }
         void Save()
         {
-            foreach (Genre g in GenresBook)
+            foreach (GenreBook g in GenresBook)
             {
-                GenreBook genreBook = Core.GMEntities.GenreBook.FirstOrDefault(a => a.BookID==ChangesBook.id && a.GenreID==g.id);
-                if (genreBook!=null) 
-                { 
-
+                if (ChangesBook.GenreBook.Contains(g)) 
+                {
+                    GenreBook newgenreBook = new GenreBook()
+                    {
+                        GenreID = GenresList.SelectedIndex,
+                        BookID = ChangesBook.id
+                    };
+                    Core.GMEntities.GenreBook.Add(genreBook);
+                    Core.GMEntities.SaveChanges();
+                    LoadData();
                 }
                 else
                 {
-
+                    GenreBook genreBook = Core.GMEntities.GenreBook.FirstOrDefault(a => a.BookID == ChangesBook.id && a.GenreID == genre.id);
+                    if (genreBook != null)
+                    {
+                        Core.GMEntities.GenreBook.Remove(genreBook);
+                        Core.GMEntities.SaveChanges();
+                    }
                 }
             }
         }

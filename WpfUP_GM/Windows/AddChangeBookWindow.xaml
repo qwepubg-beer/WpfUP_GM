@@ -21,14 +21,16 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Название" VerticalAlignment="Center" Margin="5" />
-        <TextBox Name="BookName" Grid.Row="0" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Name}" Height="30"></TextBox>
+        <TextBox Name="BookName" Grid.Row="0" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Book.Name}" Height="30"></TextBox>
         <TextBlock Name="RatingText" Text="Содержимое" Grid.Row="1" Grid.Column="0"  VerticalAlignment="Center" Margin="5" TextWrapping="Wrap"/>
-        <TextBox Name="BookText" Grid.Row="1" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Text}" Height="80"></TextBox>
-        <StackPanel Grid.Row="2" Grid.RowSpan="2" Margin="5" VerticalAlignment="Center">
+        <TextBox Name="BookText" Grid.Row="1" Grid.Column="1" Margin="5" TextWrapping="Wrap" Text="{Binding Book.Text}" Height="80"></TextBox>
+        <TextBlock Text="Обложка" Grid.Row="2" Grid.Column="0"  VerticalAlignment="Center" Margin="5" TextWrapping="Wrap"/>
+        <TextBox Name="BookCover" Grid.Row="2" Grid.Column="2" Margin="5" TextWrapping="Wrap" Text="{Binding Book.Cover}" Height="30"></TextBox>
+        <StackPanel Grid.Row="3" Grid.RowSpan="2" Margin="5" VerticalAlignment="Center">
             <ComboBox x:Name="GenreComboBox" Width="160" Height="40" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5" SelectedIndex="0"></ComboBox>
             <Button Name="AddGenre" Height="Auto" Content="Добавить" Click="AddGenre_Click"></Button>
         </StackPanel>
-        <ListBox x:Name="GenresList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
+        <ListBox x:Name="GenresList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Margin" Value="5"/>
