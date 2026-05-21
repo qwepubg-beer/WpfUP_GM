@@ -32,7 +32,7 @@ namespace WpfUP_GM.Pages
         private void LoadData()
         {
             RolesList = Core.GMEntities.Role.ToList();
-            UsersList = new ObservableCollection<User>(Core.GMEntities.User.Where(y => y.id != Static.user.id).ToList());
+            UsersList = new ObservableCollection<User>(Core.GMEntities.User.Where(y => y.RoleID!=3).ToList());
             UserDataGrid.ItemsSource = UsersList;
         }
         private void Save_Click(object sender, RoutedEventArgs e)

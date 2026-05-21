@@ -25,7 +25,11 @@ namespace WpfUP_GM
             MainFrame.NavigationService.Navigate(new Katalog(false));
 
         }
-
+        public void LoadDate()
+        {
+            if (IsReg() && Static.user.RoleID == 3) { Admin.Visibility = Visibility.Visible; }
+            if (IsReg() && !Static.user.IsActive) { Block.Visibility = Visibility.Visible; }
+        }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             if(MainFrame.NavigationService.CanGoBack)
@@ -90,6 +94,11 @@ namespace WpfUP_GM
                 }
             }
             }
+        }
+
+        private void Admin_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new AdminPage());
         }
     }
 }

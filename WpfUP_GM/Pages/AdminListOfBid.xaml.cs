@@ -24,7 +24,7 @@ namespace WpfUP_GM.Pages
         public AdminListOfBid(TypeBid bidtype)
         {
             InitializeComponent();
-            BidList.ItemsSource = Core.GMEntities.Bid.Where(a => a.TypeBid1 == bidtype).ToList();
+            BidList.ItemsSource = Core.GMEntities.Bid.Where(a => a.TypeBid == bidtype.id).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,7 +41,8 @@ namespace WpfUP_GM.Pages
                     case "Разморозка аккаунта":
                         if (result == MessageBoxResult.Yes) { User edituser = Core.GMEntities.User.Find(bid.User.id); edituser.IsActive = true; Core.GMEntities.SaveChanges(); }
                         break;
-                    case "Разморозка книги"://добавить книгу в bid
+                    case "Разморозка книги":
+                        if (result == MessageBoxResult.Yes) { Book editbook = Core.GMEntities.Book.Find(bid.Book.id); editbook.IsActive = true; Core.GMEntities.SaveChanges(); }
                         break;
                     default:
                         break;

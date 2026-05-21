@@ -43,6 +43,7 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderBrush" Value="{StaticResource PrimaryDarkBrush}"/>
@@ -51,10 +52,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" 
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="1" 
-                            CornerRadius="4"
-                            Padding="{TemplateBinding Padding}">
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1" 
+                        CornerRadius="4"
+                        Padding="{TemplateBinding Padding}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -72,6 +73,12 @@
                 <Setter Property="Foreground" Value="{StaticResource SecondaryTextBrush}"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+    <Style TargetType="Frame">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
     </Style>
     <Style TargetType="ComboBox">
         <Setter Property="Margin" Value="5"/>
@@ -112,33 +119,4 @@
     </Style>
     <Style TargetType="Image">
     </Style>
-    <Style x:Key="BookCoverControl" TargetType="ContentControl">
-        <Setter Property="Width" Value="120"/>
-        <Setter Property="Height" Value="180"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ContentControl">
-                    <Grid>
-                        <Image Source="{StaticResource PlaceholderImage}" 
-                               Stretch="Uniform" 
-                               Visibility="Visible"/>
-                        <Image x:Name="CoverImage" 
-                               Source="{TemplateBinding Content}"
-                               Stretch="UniformToFill"
-                               Visibility="Collapsed"/>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}}" Value="True">
-                            <Setter TargetName="CoverImage" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="CoverImage" Property="Source" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Content, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
-                            <Setter TargetName="CoverImage" Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
 </ResourceDictionary>

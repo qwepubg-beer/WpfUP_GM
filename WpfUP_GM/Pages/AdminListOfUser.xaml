@@ -32,8 +32,8 @@
                 <DataGridTextColumn Header="Логин" Binding="{Binding login}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding password}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Номер роли" Binding="{Binding Role}"/>
-                <DataGridTextColumn Header="Роль" Binding="{Binding Role.Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Номер роли" Binding="{Binding RoleID}"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role.RoleName}" IsReadOnly="True"/>
                 <DataGridCheckBoxColumn Header="Активен" Binding="{Binding IsActive}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -29,11 +29,12 @@ namespace WpfUP_GM.Pages
         {
             if (ProductList.SelectedItem != null)
             {
-                Rewiew change = Core.GMEntities.Rewiew.Find(ProductList.SelectedItem as Rewiew);
+                Rewiew rewiew = ProductList.SelectedItem as Rewiew;
+                Rewiew change = Core.GMEntities.Rewiew.Find(rewiew.id);
                 if (change != null)
                 {
-                    //change.IsActive = change.IsActive ? false : true;
-                    //Core.GMEntities.SaveChanges();
+                    change.IsActive = change.IsActive ? false : true;
+                    Core.GMEntities.SaveChanges();
                 }
                 ProductList.ItemsSource = Core.GMEntities.Rewiew.ToList();
             }

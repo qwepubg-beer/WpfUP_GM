@@ -37,7 +37,7 @@
             <Button Name="Block" Grid.Row="4" Click="Block_Click" Visibility="Hidden"  Margin="0">
                 <Image Source="/Images/freeze.png"/>
             </Button>
-            <Button Name="Admin" Grid.Row="4" Visibility="Hidden"  Margin="0">
+            <Button Name="Admin" Grid.Row="4" Visibility="Hidden" Click="Admin_Click" Margin="0">
                 <Image Source="/Images/images.png"/>
             </Button>
 

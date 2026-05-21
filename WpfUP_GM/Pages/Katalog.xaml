@@ -53,6 +53,6 @@
             <Button Content="Поиск" Click="Button_Click_1" Grid.Column="0"/>
             <Button Content="Сброс" Click="Button_Click" Grid.Column="1"/>
         </Grid>
-        <TextBox Name="TextSearch" TextWrapping="Wrap" Text=""  Grid.Column="0"/>
+        <TextBox Name="TextSearch" TextWrapping="Wrap" Text="" Grid.Column="0" Margin="8"/>
     </Grid>
 </Page>

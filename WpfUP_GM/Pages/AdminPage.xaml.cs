@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using WpfUP_GM.Pages;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
@@ -38,22 +38,19 @@ namespace WpfUP_GM.Pages
         {
             AdminFrame.NavigationService.Navigate(new AdminListOfBid(Core.GMEntities.TypeBid.FirstOrDefault(u => u.BidName == "Получение роль автор")));
         }
-
-        private void TypeListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
-            switch (TypeListComboBox.SelectedIndex)
-            {
-                case 0:
-                    AdminFrame.NavigationService.Navigate(new AdminListOfUser());
-                    break;
-                case 1:
-                    AdminFrame.NavigationService.Navigate(new AdminListOfBook());
-                    break;
-                case 2:
-                    AdminFrame.NavigationService.Navigate(new AdminListOfRewiew());
-                    break;
-            }
+            AdminFrame.NavigationService.Navigate(new AdminListOfUser());
+        }
 
+        private void ComboBoxItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+            AdminFrame.NavigationService.Navigate(new AdminListOfBook());
+        }
+
+        private void ComboBoxItem_Selected_2(object sender, RoutedEventArgs e)
+        {
+            AdminFrame.NavigationService.Navigate(new AdminListOfRewiew());
         }
     }
 }

@@ -79,6 +79,10 @@ namespace WpfUP_GM
                 return false;
             }
         }
+        public static bool UserIsActive()
+        {
+            return Static.user.IsActive;
+        }
         private static bool Emailvalidation(string email)
         {
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";

@@ -29,6 +29,7 @@ namespace WpfUP_GM.Pages
         {
             if(Function.Enter(log.Text,pasw.Password))
             {
+                mainWindow.LoadDate();
                 mainWindow.MainFrame.NavigationService.Navigate(new Katalog(false));
             }
             else

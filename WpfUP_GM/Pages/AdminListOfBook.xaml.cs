@@ -30,7 +30,8 @@ namespace WpfUP_GM.Pages
         {
             if(ProductList.SelectedItem!=null)
             {
-                Book change = Core.GMEntities.Book.Find(ProductList.SelectedItem as Book);
+                Book book = ProductList.SelectedItem as Book;
+                Book change = Core.GMEntities.Book.Find(book.id);
                 if (change != null) 
                 {
                     change.IsActive = change.IsActive? false : true;

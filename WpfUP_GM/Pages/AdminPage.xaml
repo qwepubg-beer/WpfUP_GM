@@ -30,10 +30,10 @@
         <Button Name="ListOfReport" Content="Список жалоб" Click="ListOfReport_Click"></Button>
         <Button Name="Frezze" Grid.Column="1" Content="Заморозки" Click="Frezze_Click"></Button>
         <Button Name="BidAuthor" Grid.Column="2"  Content="Заявка на роль автора" Click="BidAuthor_Click"></Button>
-        <ComboBox Grid.Column="3" x:Name="TypeListComboBox"  IsEditable="True"  SelectedIndex="0" SelectionChanged="TypeListComboBox_SelectionChanged">
-            <ComboBoxItem Content="Список пользователей"> </ComboBoxItem>
-            <ComboBoxItem Content="Список книг"></ComboBoxItem>
-            <ComboBoxItem Content="Список отзывов"></ComboBoxItem>
+        <ComboBox Grid.Column="3" x:Name="TypeListComboBox"  IsEditable="True">
+            <ComboBoxItem Content="Список пользователей" Selected="ComboBoxItem_Selected"> </ComboBoxItem>
+            <ComboBoxItem Content="Список книг" Selected="ComboBoxItem_Selected_1"></ComboBoxItem>
+            <ComboBoxItem Content="Список отзывов" Selected="ComboBoxItem_Selected_2"></ComboBoxItem>
         </ComboBox>
         <Frame x:Name="AdminFrame" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="8"></Frame>
     </Grid>

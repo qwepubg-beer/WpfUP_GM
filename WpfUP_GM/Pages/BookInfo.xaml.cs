@@ -159,7 +159,7 @@ namespace WpfUP_GM.Pages
                     };
                     Core.GMEntities.Report.Add(rep);
                     Core.GMEntities.SaveChanges();
-                    MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Жалоба отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
