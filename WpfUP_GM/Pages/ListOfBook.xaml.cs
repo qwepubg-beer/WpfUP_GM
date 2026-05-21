@@ -21,37 +21,55 @@ namespace WpfUP_GM.Pages
     public partial class ListOfBook : Page
     {
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+        int type = 0;
+        private bool isDirty = false;
+        // Источник данных для всех комбобоксов
+        public List<TypeBookList> TypeBookList { get; set; }
+
         public ListOfBook(int a)
         {
             InitializeComponent();
-            ProductList.ItemsSource= Core.GMEntities.BookInList.Where(b=> b.UserID == Static.user.id && b.TypeListID==a).ToList();
+            type = a;
+            LoadTypeBookList();
+            LoadData();
+        }
+        void LoadTypeBookList()
+        {
+            TypeBookList = Core.GMEntities.TypeBookList.ToList();
         }
 
+        void LoadData()
+        {
+            ProductList.ItemsSource = Core.GMEntities.BookInList.Where(b => b.UserID == Static.user.id && b.TypeListID == type).ToList(); isDirty = false;
+        }
         private void Read_Click(object sender, RoutedEventArgs e)
         {
-            if(ProductList.SelectedItem!=null)
+            if (ProductList.SelectedItem is BookInList book)
             {
-                BookInList book = ProductList.SelectedItem as BookInList;
-                Book book1 = Core.GMEntities.Book.Find(book.BookID);    
+                Book book1 = Core.GMEntities.Book.Find(book.BookID);
                 mainWindow.MainFrame.NavigationService.Navigate(new ReadBook(book1));
             }
-            
         }
 
-        private void ChangeList_Click(object sender, RoutedEventArgs e)
+        private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //сделать окно с выбором списка
-            if (ProductList.SelectedItem != null)
+            isDirty = true;
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            try
             {
-                BookInList book = ProductList.SelectedItem as BookInList;
-                BookInList book1 = Core.GMEntities.BookInList.Find(book.BookID);
-                book1.TypeListID = 2;
+                Core.GMEntities.SaveChanges();
+                LoadData(); // обновляет список и сбрасывает флаг isDirty
+                MessageBox.Show("Изменения успешно сохранены.", "Сохранение",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
-        }
-
-        private void ProductList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
