@@ -1,12 +1,42 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ListBox x:Key="ListBoxStyle" Margin="5" Padding="5"/>
-    <Button x:Key="ButtonStyle" Margin="5" Height="auto" Width="auto" FontSize="14"/>
-    <ComboBox x:Key="ComboboxStyle" Margin="5" Height="auto" Width="auto" FontSize="14"></ComboBox>
-    <TextBlock x:Key="TextBlockStyle" FontSize="14" TextWrapping="Wrap"></TextBlock>
-    <TextBox x:Key="TextBoxStyle" FontSize="14" TextWrapping="Wrap"></TextBox>
-    <PasswordBox x:Key="PasswordBoxStyle" FontSize="14"></PasswordBox>
-    <Grid x:Key="GridinGridStyle" Margin="5"></Grid>
-    <Slider x:Key="SliderStyle"/>
-    <Image x:Key="ImageStyle"/>
+    <Style TargetType="ListBox">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Height" Value="auto"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style TargetType="Grid">
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <Style TargetType="Slider"/>
+    <Style TargetType="Image"/>
+
 </ResourceDictionary>

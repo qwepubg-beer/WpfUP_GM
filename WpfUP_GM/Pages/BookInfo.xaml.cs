@@ -95,7 +95,7 @@ namespace WpfUP_GM.Pages
                     };
                     Core.GMEntities.Rewiew.Add(rep);
                     var changeBook = Core.GMEntities.Book.Find(Book.id);
-                    changeBook.Rating = Funcction.Rewiew(changeBook, Rating);
+                    changeBook.Rating = Function.Rewiew(changeBook, Rating);
                     Core.GMEntities.SaveChanges();
                     MessageBox.Show($"Отзыв отправлен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoadRewiew();

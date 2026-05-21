@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfUP_GM.Pages;
-using static WpfUP_GM.Funcction;
+using static WpfUP_GM.Function;
+
 namespace WpfUP_GM
 {
     public partial class MainWindow : Window
@@ -22,6 +23,7 @@ namespace WpfUP_GM
         {
             InitializeComponent();
             MainFrame.NavigationService.Navigate(new Katalog(false));
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

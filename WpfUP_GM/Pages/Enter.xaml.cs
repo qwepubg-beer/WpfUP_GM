@@ -27,7 +27,7 @@ namespace WpfUP_GM.Pages
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(Funcction.Enter(log.Text,pasw.Password))
+            if(Function.Enter(log.Text,pasw.Password))
             {
                 mainWindow.MainFrame.NavigationService.Navigate(new Katalog(false));
             }
