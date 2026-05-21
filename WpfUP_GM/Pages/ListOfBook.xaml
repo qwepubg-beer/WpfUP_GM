@@ -21,11 +21,11 @@
         <ListBox x:Name="ProductList"
          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
          d:ItemsSource="{d:SampleData ItemCount=5}"
-         SelectionChanged="ProductList_SelectionChanged" Grid.Row="1" Grid.ColumnSpan="2">
+         Grid.Row="1" Grid.ColumnSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Center">
-                        <Image Height="100" Width="160" Source="{Binding Cover}"/>
+                        <Image Height="100" Width="160" Source="{Binding Book.Cover}"/>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{Binding Book.User.Name, StringFormat=Автор: {0}}"/>
                             <TextBlock Text="{Binding Book.Name}" TextWrapping="Wrap"/>

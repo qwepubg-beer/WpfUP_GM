@@ -26,6 +26,7 @@ namespace WpfUP_GM
         public string Text { get; set; }
         public int BookID { get; set; }
         public Nullable<System.DateTime> RewiewDate { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

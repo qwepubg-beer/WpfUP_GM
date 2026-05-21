@@ -24,7 +24,7 @@ namespace WpfUP_GM.Pages
         public Katalog(bool avtor)
         {
             InitializeComponent();
-            ProductList.ItemsSource = avtor ? Core.GMEntities.Book.Where(y=> y.Author==Static.user.id).ToList() : Core.GMEntities.Book.ToList();
+            ProductList.ItemsSource = avtor ? Core.GMEntities.Book.Where(y=> y.Author==Static.user.id).ToList() : Core.GMEntities.Book.Where(a=>a.IsActive==true).ToList();
             GenreComboBox.ItemsSource = Core.GMEntities.Genre.ToList();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)

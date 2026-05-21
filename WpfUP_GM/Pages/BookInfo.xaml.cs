@@ -31,12 +31,12 @@ namespace WpfUP_GM.Pages
         void loadBooK(Book book)
         {
             LoadPage();
-            this.Book = book;
+            Book = book;
             DataContext = Book;
         }
         private void LoadRewiew()
         {
-            RewiewList.ItemsSource=Core.GMEntities.Rewiew.Where(a =>a.BookID== Book.id).ToList();
+            RewiewList.ItemsSource=Core.GMEntities.Rewiew.Where(a =>a.BookID == Book.id && a.IsActive==true).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,10 +67,20 @@ namespace WpfUP_GM.Pages
         {
             if(IsReg())
             {
-                if (Static.user.RoleID == 2)
-            {
-                AutorButton.Visibility= Visibility.Visible;
-            }
+                switch(Static.user.RoleID)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        AutorButton.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        ReportAuthor.Visibility = Visibility.Hidden;
+                        ReportRew.Visibility = Visibility.Hidden;
+                        FrezzeAuthor.Visibility = Visibility.Visible;
+                        AdminFrezeRewiew.Visibility = Visibility.Visible;
+                        break;
+                }
             }
 
         }
@@ -152,6 +162,23 @@ namespace WpfUP_GM.Pages
                     MessageBox.Show($"Отзыв отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+        }
+
+        private void AdminFrezeRewiew_Click(object sender, RoutedEventArgs e)
+        {
+            if(RewiewList.ItemsSource != null)
+            {
+                Rewiew rewiew = RewiewList.ItemsSource as Rewiew;
+                Rewiew editRewiew = Core.GMEntities.Rewiew.Find(rewiew.id);
+                editRewiew.IsActive = false;
+                Core.GMEntities.SaveChanges();
+            }
+        }
+        private void FrezzeAuthor_Click(object sender, RoutedEventArgs e)
+        {
+            Book editBook= Core.GMEntities.Book.Find(Book.id);
+            editBook.IsActive = false;
+            Core.GMEntities.SaveChanges();
         }
     }
 }

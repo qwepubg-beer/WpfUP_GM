@@ -20,38 +20,36 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Grid.Row="8" Margin="5">
+        <Grid Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="ReportAuthor" Content="Жалоба на автора" Click="ReportAuthor_Click" Grid.Column="0"/>
+            <Button x:Name="FrezzeAuthor" Content="Заморозить автора" Grid.Column="0" Visibility="Hidden"/>
             <Button x:Name="AutorButton" Content="Изменить" Click="Button_Click_2"  Grid.Column="1"  Visibility="Hidden"/>
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="8">
+        <Grid Grid.Column="2" Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button  Content="Пожаловаться" Click="Button_Click" Grid.Column="0" Margin="5"/>
-            <Button  Content="Добавить" Click="Button_Click_1" Grid.Column="1" Margin="5"/>
-        </Grid> 
-        <Image Grid.RowSpan="3" Source="{Binding Cover}" Margin="5"/>
-        <TextBlock Name="Autor" Grid.Row="3"  Text="{Binding User.Name, StringFormat=Автор: {0}}"  Margin="5"/>
-        <TextBlock Name="BookName" Grid.Row="4"  Text="{Binding Name}" TextWrapping="Wrap" Margin="5"/>
-        <TextBlock Grid.Row="5"  Text="{Binding Rating, StringFormat=Рейтинг: {0}}"   Margin="5"/>
-        <Button Grid.Row="6"  Content="Добавить книгу в список" Click="Button_Click_3" Margin="5"/>
-        <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
-            <ListBox.ItemTemplate>
+            <Button Name="ReportRew"  Content="Пожаловаться" Click="Button_Click" Grid.Column="0"/>
+            <Button Name="AdminFrezeRewiew" Content="Пожаловаться" Click="AdminFrezeRewiew_Click" Grid.Column="0" Visibility="Hidden"/>
+            <Button  Content="Добавить" Click="Button_Click_1" Grid.Column="1"/>
+        </Grid>
+        <Image Grid.RowSpan="3" Source="{Binding Cover}"/>
+        <TextBlock Name="Autor" Grid.Row="1" Text="{Binding User.Name, StringFormat=Автор: {0}}" Grid.Column="1"/>
+        <TextBlock Name="BookName" Grid.Row="0" Text="{Binding Name}" TextWrapping="Wrap"  Grid.Column="1"/>
+        <TextBlock Grid.Row="2" Text="{Binding Rating, StringFormat=Рейтинг: {0}}" Grid.Column="1"/>
+        <TextBlock Grid.Row="3" Grid.RowSpan="2" Text="{Binding Description, StringFormat=Описание: {0}}" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="6" Content="Добавить книгу в список" Click="Button_Click_3" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2" Grid.Row="0" Grid.RowSpan="7" >
+        <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="{Binding User.Name, StringFormat=Пользователь: {0}}"/>

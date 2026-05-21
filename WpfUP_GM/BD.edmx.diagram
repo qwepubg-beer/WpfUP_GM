@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dcd43fa8b6364ab5aeddc14914c0f971" Name="Diagram1">
-        <EntityTypeShape EntityType="UP_GMModel.Bid" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+      <Diagram DiagramId="f7ce89e859994e878527c2151a4ef3c7" Name="Diagram1">
+        <EntityTypeShape EntityType="UP_GMModel.Bid" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.Book" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.BookInList" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.Genre" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.GenreBook" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.Report" Width="1.5" PointX="10.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.BookInList" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.Genre" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.GenreBook" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.Report" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.Rewiew" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.Role" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.Role" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_GMModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.TypeBid" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.TypeBookList" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UP_GMModel.User" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.TypeBid" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.TypeBookList" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP_GMModel.User" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="UP_GMModel.FK_Bid_Book" ManuallyRouted="false" />
         <AssociationConnector Association="UP_GMModel.FK_Bid_TypeBid" ManuallyRouted="false" />
         <AssociationConnector Association="UP_GMModel.FK_Bid_User" ManuallyRouted="false" />

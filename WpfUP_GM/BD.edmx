@@ -28,6 +28,7 @@
           <Property Name="Author" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="BookInList">
           <Key>
@@ -93,6 +94,7 @@
           <Property Name="Text" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="BookID" Type="int" Nullable="false" />
           <Property Name="RewiewDate" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -473,6 +475,7 @@
           <Property Name="Author" Type="Int32" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Book" FromRole="Book" ToRole="Bid" />
           <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="Book" ToRole="User" />
           <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Book" FromRole="Book" ToRole="GenreBook" />
@@ -531,6 +534,7 @@
           <Property Name="Text" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <Property Name="RewiewDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Book" Relationship="Self.FK_Rewiew_Book" FromRole="Rewiew" ToRole="Book" />
           <NavigationProperty Name="User" Relationship="Self.FK_Rewiew_User" FromRole="Rewiew" ToRole="User" />
           <NavigationProperty Name="Report" Relationship="Self.ReportRewiew" FromRole="Rewiew" ToRole="Report" />
@@ -847,6 +851,7 @@
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -896,6 +901,7 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
                 <ScalarProperty Name="RewiewDate" ColumnName="RewiewDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
