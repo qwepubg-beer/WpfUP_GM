@@ -27,13 +27,10 @@ namespace WpfUP_GM.Pages
             ProductList.ItemsSource = avtor ? Core.GMEntities.Book.Where(y=> y.Author==Static.user.id).ToList() : Core.GMEntities.Book.ToList();
             GenreComboBox.ItemsSource = Core.GMEntities.Genre.ToList();
         }
-
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ProductList.ItemsSource= Core.GMEntities.Book.Where(a=>a.Name.Contains(TextSearch.Text) || a.User.Name.Contains(TextSearch.Text)).ToList();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             TextSearch.Text = "";
@@ -41,7 +38,6 @@ namespace WpfUP_GM.Pages
             TypeComboBox.SelectedItem = null;
             ProductList.ItemsSource = Core.GMEntities.Book.ToList();
         }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (ProductList.SelectedItem != null)

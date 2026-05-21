@@ -46,8 +46,12 @@ namespace WpfUP_GM.Pages
                 BookInList book = ProductList.SelectedItem as BookInList;
                 BookInList book1 = Core.GMEntities.BookInList.Find(book.BookID);
                 book1.TypeListID = 2;
-
             }
+        }
+
+        private void ProductList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

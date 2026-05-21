@@ -9,7 +9,7 @@
       Title="ListOfBook">
 
     <Grid>
-        <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ProductList_SelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="{Binding BackgroundColor}"/>
