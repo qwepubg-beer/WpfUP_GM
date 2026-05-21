@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Regestaration">
 
-    <Grid>
+    <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
@@ -27,15 +27,15 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Регистрация" FontSize="24" HorizontalAlignment="Center"></TextBlock>
             <StackPanel Grid.Row="1" Grid.RowSpan="7">
-                <TextBlock HorizontalAlignment="Left" Text="E-mail" Padding="5" FontSize="16"/>
-                <TextBox x:Name="Email" Margin="5" MinHeight="40"/>
-                <TextBlock HorizontalAlignment="Left" Text="Логин" Padding="5" FontSize="16"/>
-                <TextBox Name="login" Margin="5" MinHeight="40"/>
-                <TextBlock  HorizontalAlignment="Left" Text="Имя" Padding="5" FontSize="16"/>
-                <TextBox Name="name" Margin="5" MinHeight="40"/>
-                <TextBlock  HorizontalAlignment="Left" Text="Пароль" Padding="5" FontSize="16"/>
-                <PasswordBox  Name="password" Margin="5" MinHeight="40"/>
-                <Button Height="40" Content="Зарегистрироваться" Click="Button_Click" Margin="5"/>
+                <TextBlock HorizontalAlignment="Left" Text="E-mail" FontSize="16"/>
+                <TextBox x:Name="Email" MinHeight="40"/>
+                <TextBlock HorizontalAlignment="Left" Text="Логин" FontSize="16"/>
+                <TextBox Name="login" MinHeight="40"/>
+                <TextBlock  HorizontalAlignment="Left" Text="Имя"  FontSize="16"/>
+                <TextBox Name="name" MinHeight="40"/>
+                <TextBlock  HorizontalAlignment="Left" Text="Пароль"  FontSize="16"/>
+                <PasswordBox  Name="password" MinHeight="40"/>
+                <Button Height="40" Content="Зарегистрироваться" Click="Button_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

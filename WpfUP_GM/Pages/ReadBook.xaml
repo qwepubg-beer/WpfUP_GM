@@ -23,6 +23,6 @@
         <TextBlock Name="Autor" Margin="5"/>
         <TextBlock Name="Name" Margin="5"/>
         </StackPanel>
-        <TextBlock Name="Text" Margin="5" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Name="Text" Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Page>

@@ -11,18 +11,12 @@
     <Grid>
         
         <ListBox x:Name="ReportList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Пользователь: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
-                        <TextBlock Padding="5" Text="{Binding Type}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding User.Name, StringFormat=Пользователь: {0}}"/>
+                        <TextBlock  Text="{Binding Text}"/>
+                        <TextBlock  Text="{Binding Type}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

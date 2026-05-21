@@ -27,9 +27,9 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button Name="ListOfReport" Margin="5" Content="Список жалоб" Click="ListOfReport_Click"></Button>
-        <Button Name="Frezze" Grid.Column="1" Margin="5" Content="Заморозки" Click="Frezze_Click"></Button>
-        <Button Name="BidAuthor" Grid.Column="2" Margin="5" Content="Заявка на роль автора" Click="BidAuthor_Click"></Button>
+        <Button Name="ListOfReport" Content="Список жалоб" Click="ListOfReport_Click"></Button>
+        <Button Name="Frezze" Grid.Column="1" Content="Заморозки" Click="Frezze_Click"></Button>
+        <Button Name="BidAuthor" Grid.Column="2"  Content="Заявка на роль автора" Click="BidAuthor_Click"></Button>
         <ComboBox Grid.Column="3" x:Name="TypeListComboBox"  IsEditable="True"  SelectedIndex="0" SelectionChanged="TypeListComboBox_SelectionChanged">
             <ComboBoxItem Content="Список пользователей"> </ComboBoxItem>
             <ComboBoxItem Content="Список книг"></ComboBoxItem>

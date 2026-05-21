@@ -10,23 +10,17 @@
 
     <Grid>
         <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Grid.Row="1">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Center">
-                        <Image Height="100" Width="160"  Source="{Binding Cover}"/>
+                        <Image Height="100" Width="160"  Source="{Binding Cover}" Margin="0"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
-                            <TextBlock Padding="5" Text="{Binding Name}" TextWrapping="Wrap"/>
-                            <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-                            <TextBlock Padding="5" Text="{Binding IsActive, StringFormat=Активна: {0}}"/>
+                            <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+                            <TextBlock Text="{Binding IsActive, StringFormat=Активна: {0}}"/>
                         </StackPanel>
-                        <Button Height="40" Content="Заморозить" Click="Button_Click" Margin="5"></Button>
+                        <Button Height="40" Content="Заморозить" Click="Button_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

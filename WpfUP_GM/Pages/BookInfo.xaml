@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BookInfo">
 
-    <Grid>
+    <Grid Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -28,10 +28,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ReportAuthor" Content="Жалоба на автора" Click="ReportAuthor_Click" Grid.Column="0" Margin="5"/>
-            <Button x:Name="AutorButton" Content="Изменить" Click="Button_Click_2"  Grid.Column="1" Margin="5" Visibility="Hidden"/>
+            <Button x:Name="ReportAuthor" Content="Жалоба на автора" Click="ReportAuthor_Click" Grid.Column="0"/>
+            <Button x:Name="AutorButton" Content="Изменить" Click="Button_Click_2"  Grid.Column="1"  Visibility="Hidden"/>
         </Grid>
-        <Grid Grid.Column="1" Grid.Row="8" Margin="5">
+        <Grid Grid.Column="1" Grid.Row="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

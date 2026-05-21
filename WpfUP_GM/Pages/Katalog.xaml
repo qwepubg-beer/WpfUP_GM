@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Katalog">
 
-    <Grid>
+    <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -20,16 +20,10 @@
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Grid.Row="1">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Center">
-                        <Image Height="120" Width="90"  Source="{Binding Cover}"/>
+                        <Image Height="120" Width="90"  Source="{Binding Cover}" Margin="0"/>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
                             <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
@@ -45,16 +39,20 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ComboBox x:Name="GenreComboBox" Width="160" Grid.Column="3" Height="40" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
-        <ComboBox x:Name="TypeComboBox" Width="160" Grid.Column="2" Height="40"  DisplayMemberPath="Name" SelectedValuePath="Id" IsEditable="True" Margin="5" SelectionChanged="TypeComboBox_SelectionChanged">
+        <ComboBox x:Name="GenreComboBox" Grid.Column="3" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
+        <ComboBox x:Name="TypeComboBox" Grid.Column="2" DisplayMemberPath="Name" SelectedValuePath="Id" IsEditable="True" SelectionChanged="TypeComboBox_SelectionChanged">
             <ComboBoxItem Content="По рейтингу возрастание"></ComboBoxItem>
             <ComboBoxItem Content="По рейтингу убывание"></ComboBoxItem>
             <ComboBoxItem Content="По имени"></ComboBoxItem>
         </ComboBox>
-        <StackPanel Grid.Column="1" Orientation="Horizontal">
-            <Button Content="Поиск" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" MaxWidth="200" MaxHeight="60" Click="Button_Click_1"/>
-            <Button Content="Сброс" HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" MaxWidth="200" MaxHeight="60" Margin="10,0,0,0" Click="Button_Click" />
-        </StackPanel>
-        <TextBox Name="TextSearch" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Center"  Width="180" Height="30" MaxWidth="400" MaxHeight="60"/>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Поиск" Click="Button_Click_1" Grid.Column="0"/>
+            <Button Content="Сброс" Click="Button_Click" Grid.Column="1"/>
+        </Grid>
+        <TextBox Name="TextSearch" TextWrapping="Wrap" Text=""  Grid.Column="0"/>
     </Grid>
 </Page>

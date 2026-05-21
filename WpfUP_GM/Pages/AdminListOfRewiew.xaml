@@ -10,20 +10,14 @@
 
     <Grid>
         <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="4" Grid.Row="1">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
-                         <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Book.Name, StringFormat=книга: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
-                        <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-                        <Button Height="40" Content="Заморозить" Click="Button_Click" Margin="5"></Button>
+                         <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
+                        <TextBlock Text="{Binding Book.Name, StringFormat=книга: {0}}"/>
+                        <TextBlock Text="{Binding Text}"/>
+                        <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+                        <Button Height="40" Content="Заморозить" Click="Button_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

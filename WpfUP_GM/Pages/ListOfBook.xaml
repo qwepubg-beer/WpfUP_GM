@@ -8,25 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListOfBook">
 
-    <Grid>
+    <Grid Margin="0">
         <ListBox x:Name="ProductList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ProductList_SelectionChanged">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Background" Value="{Binding BackgroundColor}"/>
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
-            <ListBox.ItemTemplate>
+<ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Center">
                         <Image Height="100" Width="160"  Source="{Binding Cover}"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Padding="5" Text="{Binding Book.User.Name, StringFormat=Автор: {0}}"/>
-                            <TextBlock Padding="5" Text="{Binding Book.Name}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Book.User.Name, StringFormat=Автор: {0}}"/>
+                            <TextBlock Text="{Binding Book.Name}" TextWrapping="Wrap"/>
                         </StackPanel>
-                        <Button Name="Read" Height="40" Content="Читать" Margin="5" Click="Read_Click"></Button>
-                        <Button Name ="ChangeList" Height="40" Content="Перенести в" Margin="5" Click="ChangeList_Click"></Button>
+                        <Button Name="Read" Height="40" Content="Читать" Click="Read_Click"></Button>
+                        <Button Name ="ChangeList" Height="40" Content="Перенести в" Click="ChangeList_Click"></Button>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

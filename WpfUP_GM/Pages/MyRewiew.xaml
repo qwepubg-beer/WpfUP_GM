@@ -10,18 +10,12 @@
 
     <Grid>
         <ListBox x:Name="RewiewList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Padding="5" Text="{Binding Book.Name, StringFormat=Книга: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Book.Name, StringFormat=Книга: {0}}"/>
+                        <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
+                        <TextBlock Text="{Binding Text}" TextWrapping="Wrap"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

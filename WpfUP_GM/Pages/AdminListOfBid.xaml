@@ -14,17 +14,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
                 <ListBox Grid.Row="1" x:Name="BidList"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Padding="5" Text="{Binding User.Name, StringFormat=Пользователь: {0}}"/>
-                        <TextBlock Padding="5" Text="{Binding Text}" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding User.Name, StringFormat=Пользователь: {0}}"/>
+                        <TextBlock Text="{Binding Text}"/>
                         <Button Content="Принять" Click="Button_Click"/>
                     </StackPanel>
                 </DataTemplate>
