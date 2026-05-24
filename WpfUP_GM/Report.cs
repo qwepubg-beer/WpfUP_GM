@@ -34,14 +34,9 @@ namespace WpfUP_GM
             {
                 return $"жалоба на книгу {Book.Name} автора {Book.User.login}";
             }
-            else if (Rewiew != null)
-            {
-                return $"жалоба на отзыв пользователя {Rewiew.User.login}";
-            }
             else
             {
-                return $"жалоба";
-
+                return $"жалоба на отзыв пользователя {Rewiew.User.login}";
             }
         }
     }

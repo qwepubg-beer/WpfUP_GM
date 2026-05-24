@@ -187,6 +187,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BookInList_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BookInList_TypeBookList">
           <End Role="TypeBookList" Type="Self.TypeBookList" Multiplicity="1" />
           <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
@@ -387,6 +399,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Book" EntitySet="Book" />
           </AssociationSet>
+          <AssociationSet Name="FK_BookInList_Book" Association="Self.FK_BookInList_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="BookInList" EntitySet="BookInList" />
+          </AssociationSet>
           <AssociationSet Name="FK_BookInList_TypeBookList" Association="Self.FK_BookInList_TypeBookList">
             <End Role="TypeBookList" EntitySet="TypeBookList" />
             <End Role="BookInList" EntitySet="BookInList" />
@@ -478,6 +494,7 @@
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bid" Relationship="Self.FK_Bid_Book" FromRole="Book" ToRole="Bid" />
           <NavigationProperty Name="User" Relationship="Self.FK_Book_User" FromRole="Book" ToRole="User" />
+          <NavigationProperty Name="BookInList" Relationship="Self.FK_BookInList_Book" FromRole="Book" ToRole="BookInList" />
           <NavigationProperty Name="GenreBook" Relationship="Self.FK_GenreBook_Book" FromRole="Book" ToRole="GenreBook" />
           <NavigationProperty Name="Rewiew" Relationship="Self.FK_Rewiew_Book" FromRole="Book" ToRole="Rewiew" />
           <NavigationProperty Name="Report" Relationship="Self.ReportBook" FromRole="Book" ToRole="Report" />
@@ -490,6 +507,7 @@
           <Property Name="BookID" Type="Int32" Nullable="false" />
           <Property Name="TypeListID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_BookInList_Book" FromRole="BookInList" ToRole="Book" />
           <NavigationProperty Name="TypeBookList" Relationship="Self.FK_BookInList_TypeBookList" FromRole="BookInList" ToRole="TypeBookList" />
           <NavigationProperty Name="User" Relationship="Self.FK_BookInList_User" FromRole="BookInList" ToRole="User" />
         </EntityType>
@@ -640,6 +658,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BookInList_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="BookInList" Type="Self.BookInList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BookInList">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GenreBook_Book">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="GenreBook" Type="Self.GenreBook" Multiplicity="*" />
@@ -776,6 +806,10 @@
           <AssociationSet Name="FK_Book_User" Association="Self.FK_Book_User">
             <End Role="User" EntitySet="User" />
             <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookInList_Book" Association="Self.FK_BookInList_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="BookInList" EntitySet="BookInList" />
           </AssociationSet>
           <AssociationSet Name="FK_GenreBook_Book" Association="Self.FK_GenreBook_Book">
             <End Role="Book" EntitySet="Book" />

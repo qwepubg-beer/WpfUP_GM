@@ -19,6 +19,7 @@ namespace WpfUP_GM
         public int TypeListID { get; set; }
         public int UserID { get; set; }
     
+        public virtual Book Book { get; set; }
         public virtual TypeBookList TypeBookList { get; set; }
         public virtual User User { get; set; }
     }

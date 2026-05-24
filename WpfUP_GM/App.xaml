@@ -11,8 +11,3 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
-<!--         <ResourceDictionary>
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Dictionary.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary> -->

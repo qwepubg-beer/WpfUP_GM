@@ -32,13 +32,13 @@
         <TextBlock Grid.Column="1" Grid.Row="3" Text="e-mail" ></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="4" Text="Name" ></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="5" Text="IsActive" ></TextBlock>
-        <TextBlock Grid.Column="2" Grid.Row="5" Text="Role" ></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Role" ></TextBlock>
         <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding login}" IsReadOnly="True" ></TextBox>
-        <TextBox Grid.Column="2" Grid.Row="2" Text="{Binding password}" ></TextBox>
-        <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding email}" ></TextBox>
-        <TextBox Grid.Column="2" Grid.Row="4" Text="{Binding Name}" ></TextBox>
-        <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding IsActive}" IsReadOnly="True"></TextBox>
-        <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding Role.Name}" IsReadOnly="True"></TextBox>
-        <Button Grid.Column="2" Grid.Row="6" Content="Получить роль-автор" Click="Button_Click"> </Button>
+        <TextBox Grid.Column="2" Grid.Row="2" Text="{Binding password}" IsReadOnly="True"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding email}" IsReadOnly="True"></TextBox>
+        <TextBox Grid.Column="2" Grid.Row="4" Text="{Binding Name}" IsReadOnly="True"></TextBox>
+        <CheckBox Grid.Column="2" Grid.Row="5" IsChecked="{Binding IsActive}" IsEnabled="False"></CheckBox>
+        <TextBox Grid.Column="2" Grid.Row="6" Text="{Binding Role.RoleName}" IsReadOnly="True"></TextBox>
+        <Button Grid.Column="2" Grid.Row="7" Content="Получить роль-автор" Click="Button_Click"> </Button>
     </Grid>
 </Page>

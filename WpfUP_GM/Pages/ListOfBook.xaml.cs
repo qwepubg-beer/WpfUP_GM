@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,15 +22,16 @@ namespace WpfUP_GM.Pages
     public partial class ListOfBook : Page
     {
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-        int type = 0;
         private bool isDirty = false;
         // Источник данных для всех комбобоксов
         public List<TypeBookList> TypeBookList { get; set; }
+        TypeBookList typeList1 = null;
 
-        public ListOfBook(int a)
+        public ListOfBook(TypeBookList typeList)
         {
             InitializeComponent();
-            type = a;
+            DataContext = this;
+            typeList1 = typeList;
             LoadTypeBookList();
             LoadData();
         }
@@ -40,7 +42,7 @@ namespace WpfUP_GM.Pages
 
         void LoadData()
         {
-            ProductList.ItemsSource = Core.GMEntities.BookInList.Where(b => b.UserID == Static.user.id && b.TypeListID == type).ToList(); isDirty = false;
+            ProductList.ItemsSource = Core.GMEntities.BookInList.Where(b => b.UserID == Static.user.id && b.TypeListID == typeList1.id).ToList(); isDirty = false;
         }
         private void Read_Click(object sender, RoutedEventArgs e)
         {
