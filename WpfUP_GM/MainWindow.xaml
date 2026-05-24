@@ -31,13 +31,13 @@
             <Button Name="Account" Grid.Row="2" Click="Account_Click"  Margin="0">
                 <Image Source="/Images/acc.png"/>
             </Button>
-            <Button Name="Author" Grid.Row="3" Click="Author_Click"  Margin="0">
+            <Button Name="Author" Grid.Row="3" Click="Author_Click"  Margin="0" Visibility="Hidden">
                 <Image Source="/Images/author.png"/>
             </Button>
-            <Button Name="Block" Grid.Row="4" Click="Block_Click" Visibility="Hidden"  Margin="0">
+            <Button Name="Block" Grid.Row="3" Click="Block_Click" Visibility="Hidden"  Margin="0">
                 <Image Source="/Images/freeze.png"/>
             </Button>
-            <Button Name="Admin" Grid.Row="4" Visibility="Hidden" Click="Admin_Click" Margin="0">
+            <Button Name="Admin" Grid.Row="3" Visibility="Hidden" Click="Admin_Click" Margin="0">
                 <Image Source="/Images/images.png"/>
             </Button>
 

@@ -14,24 +14,31 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Name="Save" Click="Save_Click" Content="Сохранить"></Button>
+
+        <Button Name="Save" Click="Save_Click" Content="Сохранить" Margin="5" Padding="10,5"/>
+
         <ListBox x:Name="ProductList"
-         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-         d:ItemsSource="{d:SampleData ItemCount=5}"
-         Grid.Row="1" Grid.ColumnSpan="2">
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 d:ItemsSource="{d:SampleData ItemCount=5}"
+                 Grid.Row="1" Grid.ColumnSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Center">
                         <Image Height="100" Width="160" Source="{Binding Book.Cover}"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="{Binding Book.User.Name, StringFormat=Автор: {0}}"/>
-                            <TextBlock Text="{Binding Book.Name}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Book.User.Name, StringFormat='Автор: {0}'}"/>
+                            <TextBlock Text="{Binding Book.Name}"/>
                         </StackPanel>
-                        <Button Name="Read" Height="40" Content="Читать" Click="Read_Click"/>
-                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=TypeBookList}" DisplayMemberPath="TypeName" SelectedValuePath="Id" SelectedValue="{Binding TypeListID, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="TypeComboBox_SelectionChanged"/>
+                        <Button Name="Read" Height="30" Content="Читать" Click="Read_Click" Margin="0,2"/>
+                        <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=AvailableTypes}" 
+                                  DisplayMemberPath="TypeName" 
+                                  SelectedValuePath="id" 
+                                  SelectedValue="{Binding TypeListID, UpdateSourceTrigger=PropertyChanged}" 
+                                  SelectionChanged="TypeComboBox_SelectionChanged"
+                                  Margin="0,2"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -28,6 +28,7 @@ namespace WpfUP_GM
         public void LoadDate()
         {
             if (IsReg() && Static.user.RoleID == 3) { Admin.Visibility = Visibility.Visible; }
+            if (IsReg() && Static.user.RoleID == 2 && Static.user.IsActive) { Author.Visibility = Visibility.Visible; }
             if (IsReg() && !Static.user.IsActive) { Block.Visibility = Visibility.Visible; }
         }
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -65,35 +66,7 @@ namespace WpfUP_GM
 
         private void Author_Click(object sender, RoutedEventArgs e)
         {   
-            if(IsReg())
-            { 
-            if (Static.user.RoleID == 2)
-            {
-                MainFrame.NavigationService.Navigate(new AuthorPage());
-            }
-            else
-            {
-                if (Static.user != null)
-                {
-                    var orderWindow = new FreezeWindow();
-                    orderWindow.Owner = Window.GetWindow(this);
-                    bool? dialogResult = orderWindow.ShowDialog();
-                    if (dialogResult == true && orderWindow.IsConfirmed)
-                    {
-                        string RewText = orderWindow.TextFr;
-                        Bid rep = new Bid()
-                        {
-                            UserID = Static.user.id,
-                            Text = RewText,
-                            TypeBid = 1,
-                            IsCompleted = false,
-                        };
-                        Core.GMEntities.Bid.Add(rep);
-                        MessageBox.Show($"Заявка на автора отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                }
-            }
-            }
+          MainFrame.NavigationService.Navigate(new AuthorPage());
         }
 
         private void Admin_Click(object sender, RoutedEventArgs e)

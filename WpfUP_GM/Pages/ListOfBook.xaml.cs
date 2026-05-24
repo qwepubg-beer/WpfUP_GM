@@ -21,41 +21,62 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class ListOfBook : Page
     {
-        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-        private bool isDirty = false;
-        // Источник данных для всех комбобоксов
-        public List<TypeBookList> TypeBookList { get; set; }
-        TypeBookList typeList1 = null;
+        private MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
+        private bool _isDirty = false;
+        private TypeBookList _currentTypeList = null;
+
+        // Регистрируем свойство зависимости, чтобы WPF видел коллекцию типов при привязке
+        public static readonly DependencyProperty AvailableTypesProperty =
+            DependencyProperty.Register(nameof(AvailableTypes), typeof(List<TypeBookList>), typeof(ListOfBook), new PropertyMetadata(null));
+
+        public List<TypeBookList> AvailableTypes
+        {
+            get { return (List<TypeBookList>)GetValue(AvailableTypesProperty); }
+            set { SetValue(AvailableTypesProperty, value); }
+        }
 
         public ListOfBook(TypeBookList typeList)
         {
             InitializeComponent();
             DataContext = this;
-            typeList1 = typeList;
+            _currentTypeList = typeList;
+
             LoadTypeBookList();
             LoadData();
         }
-        void LoadTypeBookList()
+
+        private void LoadTypeBookList()
         {
-            TypeBookList = Core.GMEntities.TypeBookList.ToList();
+            // Загружаем типы из БД
+            AvailableTypes = Core.GMEntities.TypeBookList.ToList();
         }
 
-        void LoadData()
+        private void LoadData()
         {
-            ProductList.ItemsSource = Core.GMEntities.BookInList.Where(b => b.UserID == Static.user.id && b.TypeListID == typeList1.id).ToList(); isDirty = false;
+            // Обратите внимание на регистр свойств (id или Id). Замените на ваш вариант в БД.
+            ProductList.ItemsSource = Core.GMEntities.BookInList
+                .Where(b => b.UserID == Static.user.id && b.TypeListID == _currentTypeList.id)
+                .ToList();
+
+            _isDirty = false;
         }
+
         private void Read_Click(object sender, RoutedEventArgs e)
         {
-            if (ProductList.SelectedItem is BookInList book)
+            // Безопасное получение данных элемента, на который кликнули
+            if (sender is Button button && button.DataContext is BookInList bookInList)
             {
-                Book book1 = Core.GMEntities.Book.Find(book.BookID);
-                mainWindow.MainFrame.NavigationService.Navigate(new ReadBook(book1));
+                var book = Core.GMEntities.Book.Find(bookInList.BookID);
+                if (book != null)
+                {
+                    _mainWindow.MainFrame.NavigationService.Navigate(new ReadBook(book));
+                }
             }
         }
 
         private void TypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            isDirty = true;
+            _isDirty = true;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -63,14 +84,12 @@ namespace WpfUP_GM.Pages
             try
             {
                 Core.GMEntities.SaveChanges();
-                LoadData(); // обновляет список и сбрасывает флаг isDirty
-                MessageBox.Show("Изменения успешно сохранены.", "Сохранение",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadData(); // Перезагружаем данные и сбрасываем флаг
+                MessageBox.Show("Изменения успешно сохранены.", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка",
-                                MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка при сохранении: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

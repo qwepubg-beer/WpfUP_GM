@@ -16,11 +16,13 @@ using WpfUP_GM.Windows;
 using static WpfUP_GM.Function;
 namespace WpfUP_GM.Pages
 {
+
     /// <summary>
     /// Логика взаимодействия для BookInfo.xaml
     /// </summary>
     public partial class BookInfo : Page
     {
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         Book Book { get; set; }
         public BookInfo(Book book)
         {
@@ -72,7 +74,6 @@ namespace WpfUP_GM.Pages
                     case 1:
                         break;
                     case 2:
-                        AutorButton.Visibility = Visibility.Visible;
                         break;
                     case 3:
                         ReportAuthor.Visibility = Visibility.Hidden;
@@ -115,15 +116,7 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var bookWindow = new AddChangeBookWindow(book: Book);
-            bookWindow.Owner = Window.GetWindow(this);
-            bool? result = bookWindow.ShowDialog();
-            if (result == true && bookWindow.IsConfirmed)
-            {
-                loadBooK(Book);
-                MessageBox.Show("Изменения сохранены!", "Успех",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            mainWindow.MainFrame.NavigationService.Navigate(new ReadBook(Book));
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

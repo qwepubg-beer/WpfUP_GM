@@ -31,7 +31,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="ReportAuthor" Content="Жалоба на автора" Click="ReportAuthor_Click" Grid.Column="0"/>
             <Button x:Name="FrezzeAuthor" Content="Заморозить автора" Grid.Column="0" Visibility="Hidden"/>
-            <Button x:Name="AutorButton" Content="Изменить" Click="Button_Click_2"  Grid.Column="1"  Visibility="Hidden"/>
+            <Button x:Name="ReadButton" Content="Читать" Click="Button_Click_2"  Grid.Column="1"/>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="7">
             <Grid.ColumnDefinitions>
