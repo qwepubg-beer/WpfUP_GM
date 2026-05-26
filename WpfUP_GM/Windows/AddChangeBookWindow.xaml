@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:WpfUP_GM.Windows"
         mc:Ignorable="d"
         Title="AddChangeBookWindow" Height="450" Width="800">
-    <Grid Margin="20">
+    <Grid Margin="0">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -21,26 +22,25 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Название" VerticalAlignment="Center" Margin="5"/>
         <TextBox Name="BookName" Grid.Row="0" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
-             Text="{Binding Name}" Height="30"/>
+             Text="{Binding Name}" Height="40"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Содержимое" VerticalAlignment="Center" Margin="5"/>
-        <TextBox Name="BookText" Grid.Row="1" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <TextBox Name="BookText" Margin="5" TextWrapping="Wrap" 
              Text="{Binding Text}" Height="80"/>
+        </ScrollViewer>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Обложка" VerticalAlignment="Center" Margin="5"/>
         <TextBox Name="BookCover" Grid.Row="2" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
-             Text="{Binding Cover}" Height="30"/>
-        <StackPanel Grid.Row="3" Grid.RowSpan="2" Margin="5" VerticalAlignment="Center">
+             Text="{Binding Cover}" Height="40"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Описание" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Name="BookDescription" Grid.Row="3" Grid.Column="1" Margin="5" TextWrapping="Wrap" 
+             Text="{Binding Description}" Height="40"/>
+        <StackPanel Grid.Row="4" Grid.RowSpan="2" Margin="5" VerticalAlignment="Center">
             <ComboBox x:Name="GenreComboBox" Width="160" Height="40" IsEditable="True" 
                   DisplayMemberPath="GenreName" SelectedValuePath="Id" Margin="5"/>
             <Button Name="AddGenre" Height="Auto" Content="Добавить" Click="AddGenre_Click"/>
         </StackPanel>
-        <ListBox x:Name="GenresList" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2"
+        <ListBox x:Name="GenresList" Grid.Column="1" Grid.Row="4" Grid.RowSpan="2"
              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Padding" Value="5"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Center">
@@ -55,9 +55,9 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
-            <Button Content="Сохранить" Width="80" Margin="5" Click="ConfirmButton_Click"/>
-            <Button Content="Отмена" Width="80" Margin="5" Click="CancelButton_Click"/>
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Content="Сохранить" Width="100" Margin="5" Click="ConfirmButton_Click"/>
+            <Button Content="Отмена" Width="100" Margin="5" Click="CancelButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

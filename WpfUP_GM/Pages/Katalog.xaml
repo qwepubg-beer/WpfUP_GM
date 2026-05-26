@@ -28,7 +28,7 @@
                             <TextBlock Text="{Binding User.Name, StringFormat=Автор: {0}}"/>
                             <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                             <TextBlock Text="{Binding Rating, StringFormat=Рейтинг: {0}}"/>
-                            <Button Height="40" Content="Информация" Click="Button_Click_2"></Button>
+                            <Button Height="40" Content="Информация" Click="Button_Click_2" Name="TargetButton"></Button>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

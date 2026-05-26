@@ -44,7 +44,7 @@ namespace WpfUP_GM
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(name) && Emailvalidation(email))
             {
                 User editUser = Core.GMEntities.User.FirstOrDefault(u => u.login == login || u.email == email);
-                if (editUser != null)
+                if (editUser == null)
                 {
                     User newuser = new User
                     {

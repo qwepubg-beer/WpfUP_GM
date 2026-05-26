@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfUP_GM.Windows;
 
 namespace WpfUP_GM.Pages
 {
@@ -21,11 +23,29 @@ namespace WpfUP_GM.Pages
     public partial class Katalog : Page
     {
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-        public Katalog(bool avtor)
+        ObservableCollection<Book> BooksList { get; set; }
+        bool AuthorList=false;
+        public Katalog(bool au)
         {
             InitializeComponent();
-            ProductList.ItemsSource = avtor ? Core.GMEntities.Book.Where(y=> y.Author==Static.user.id).ToList() : Core.GMEntities.Book.Where(a=>a.IsActive==true).ToList();
+            AuthorList=au;
             GenreComboBox.ItemsSource = Core.GMEntities.Genre.ToList();
+            LoadData(); 
+            ProductList.ItemsSource = BooksList;
+        }
+        void LoadData()
+        {
+            if (AuthorList)
+            {
+                if (Static.user != null && Static.user.RoleID == 2)
+                {
+                    BooksList = new ObservableCollection<Book>(Core.GMEntities.Book.Where(y => y.Author == Static.user.id).ToList());
+                }
+            }
+            else
+            {
+                BooksList = new ObservableCollection<Book>(Core.GMEntities.Book.Where(a => a.IsActive == true).ToList());
+            }
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -36,13 +56,29 @@ namespace WpfUP_GM.Pages
             TextSearch.Text = "";
             GenreComboBox.SelectedItem = null;
             TypeComboBox.SelectedItem = null;
-            ProductList.ItemsSource = Core.GMEntities.Book.ToList();
+            LoadData();
         }
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (ProductList.SelectedItem != null)
             {
-                mainWindow.MainFrame.NavigationService.Navigate(new BookInfo(ProductList.SelectedItem as Book));
+                if(Static.user.RoleID == 2)
+                {
+                    Book book = ProductList.SelectedItem as Book;
+                    var bookWindow = new AddChangeBookWindow(book: book, authorId: Static.user.id);
+                    bookWindow.Owner = Window.GetWindow(this);
+                    bool? result = bookWindow.ShowDialog();
+                    if (result == true && bookWindow.IsConfirmed)
+                    {
+                        MessageBox.Show("Книга успешно добавлена!", "Успех",
+                                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                else
+                {
+                    mainWindow.MainFrame.NavigationService.Navigate(new BookInfo(ProductList.SelectedItem as Book));
+                }
+                
             }
         }
         private void GenreComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,7 +86,7 @@ namespace WpfUP_GM.Pages
             if (GenreComboBox.SelectedItem != null)
             {
                 Genre g = GenreComboBox.SelectedItem as Genre;
-                ProductList.ItemsSource = Core.GMEntities.Book.Where(b => b.GenreBook.Any(gb => gb.GenreID == g.id)).ToList();
+                ProductList.ItemsSource = BooksList.Where(b => b.GenreBook.Any(gb => gb.GenreID == g.id)).ToList();
             }
         }
 
@@ -59,13 +95,13 @@ namespace WpfUP_GM.Pages
                 switch (TypeComboBox.SelectedIndex)
                 {
                     case 0:
-                    ProductList.ItemsSource = Core.GMEntities.Book.OrderBy(b => b.Rating).ToList();
+                    ProductList.ItemsSource = BooksList.OrderBy(b => b.Rating).ToList();
                     break;
                     case 1:
-                    ProductList.ItemsSource = Core.GMEntities.Book.OrderByDescending(b => b.Rating).ToList();
+                    ProductList.ItemsSource = BooksList.OrderByDescending(b => b.Rating).ToList();
                     break;
                     case 2:
-                    ProductList.ItemsSource = Core.GMEntities.Book.OrderBy(b => b.Name).ToList();
+                    ProductList.ItemsSource = BooksList.OrderBy(b => b.Name).ToList();
                     break;
                     default:   
                     break;

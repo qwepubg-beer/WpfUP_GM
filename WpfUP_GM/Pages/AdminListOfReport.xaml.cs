@@ -29,7 +29,7 @@ namespace WpfUP_GM.Pages
             }
             else
             {
-                ReportList.ItemsSource = Core.GMEntities.Report.Where(b=> b.User1==Static.user || b.Book.User== Static.user).ToList();
+                ReportList.ItemsSource = Core.GMEntities.Report.Where(b=> b.User1.id == Static.user.id || b.Book.User.id == Static.user.id).ToList();
             }
             
         }

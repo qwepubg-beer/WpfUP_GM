@@ -92,6 +92,7 @@ namespace WpfUP_GM.Windows
                     Text = BookText.Text,
                     Cover = BookCover.Text,
                     Author = _authorId,
+                    Description = BookDescription.Text,
                     IsActive = true,
                     Rating = 0
                 };
@@ -122,6 +123,7 @@ namespace WpfUP_GM.Windows
                 bookFromDb.Name = BookName.Text;
                 bookFromDb.Text = BookText.Text;
                 bookFromDb.Cover = BookCover.Text;
+                bookFromDb.Description = BookDescription.Text;
                 bookFromDb.GenreBook.Clear();
                 foreach (var gb in GenresBook)
                 {

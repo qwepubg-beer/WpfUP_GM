@@ -17,12 +17,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="4*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="1">
+        <Border Grid.Column="1" BorderThickness="2" Padding="5" CornerRadius="1" BorderBrush="Gray">
+        <StackPanel>
         <TextBlock Name="Autor" Margin="5"/>
         <TextBlock Name="Name" Margin="5"/>
         </StackPanel>
-        <TextBlock Name="Text" Grid.Row="1" Grid.Column="1"/>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="2" Padding="5" CornerRadius="1" BorderBrush="Gray">
+            <ScrollViewer>
+                <TextBlock Name="Text"/>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Page>

@@ -24,10 +24,7 @@ namespace WpfUP_GM.Pages
         private MainWindow _mainWindow = Application.Current.MainWindow as MainWindow;
         private bool _isDirty = false;
         private TypeBookList _currentTypeList = null;
-
-        // Регистрируем свойство зависимости, чтобы WPF видел коллекцию типов при привязке
-        public static readonly DependencyProperty AvailableTypesProperty =
-            DependencyProperty.Register(nameof(AvailableTypes), typeof(List<TypeBookList>), typeof(ListOfBook), new PropertyMetadata(null));
+        public static readonly DependencyProperty AvailableTypesProperty = DependencyProperty.Register(nameof(AvailableTypes), typeof(List<TypeBookList>), typeof(ListOfBook), new PropertyMetadata(null));
 
         public List<TypeBookList> AvailableTypes
         {
@@ -47,23 +44,17 @@ namespace WpfUP_GM.Pages
 
         private void LoadTypeBookList()
         {
-            // Загружаем типы из БД
             AvailableTypes = Core.GMEntities.TypeBookList.ToList();
         }
 
         private void LoadData()
         {
-            // Обратите внимание на регистр свойств (id или Id). Замените на ваш вариант в БД.
-            ProductList.ItemsSource = Core.GMEntities.BookInList
-                .Where(b => b.UserID == Static.user.id && b.TypeListID == _currentTypeList.id)
-                .ToList();
-
+            ProductList.ItemsSource = Core.GMEntities.BookInList.Where(b => b.UserID == Static.user.id && b.TypeListID == _currentTypeList.id).ToList();
             _isDirty = false;
         }
 
         private void Read_Click(object sender, RoutedEventArgs e)
         {
-            // Безопасное получение данных элемента, на который кликнули
             if (sender is Button button && button.DataContext is BookInList bookInList)
             {
                 var book = Core.GMEntities.Book.Find(bookInList.BookID);
@@ -84,7 +75,7 @@ namespace WpfUP_GM.Pages
             try
             {
                 Core.GMEntities.SaveChanges();
-                LoadData(); // Перезагружаем данные и сбрасываем флаг
+                LoadData();
                 MessageBox.Show("Изменения успешно сохранены.", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
