@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 using static WpfUP_GM.Function;
 namespace WpfUP_GM.Pages
 {
@@ -21,6 +20,7 @@ namespace WpfUP_GM.Pages
     /// </summary>
     public partial class Regestaration : Page
     {
+        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         public Regestaration()
         {
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace WpfUP_GM.Pages
             if (Reg(login.Text, Email.Text, name.Text, password.Password))
             {
                 MessageBox.Show("Вы зарегистрированы");
+                mainWindow.MainFrame.NavigationService.Navigate(new Katalog(false));
             }
         }
     }
