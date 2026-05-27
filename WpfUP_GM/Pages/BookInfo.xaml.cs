@@ -43,7 +43,7 @@ namespace WpfUP_GM.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Static.user!=null && RewiewList.ItemsSource !=null)
+            if (Static.user!=null && RewiewList.ItemsSource !=null && !UserIsActive())
             { 
                 var orderWindow = new RewiewWindow();
                 orderWindow.Owner = Window.GetWindow(this);
@@ -87,7 +87,7 @@ namespace WpfUP_GM.Pages
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (IsReg())
+            if (IsReg() && !UserIsActive())
             {
                 var orderWindow = new AddRewiew();
                 orderWindow.Owner = Window.GetWindow(this);
@@ -138,7 +138,7 @@ namespace WpfUP_GM.Pages
 
         private void ReportAuthor_Click(object sender, RoutedEventArgs e)
         {
-            if (IsReg())
+            if (IsReg() && !UserIsActive())
             {
                 var orderWindow = new RewiewWindow();
                 orderWindow.Owner = Window.GetWindow(this);

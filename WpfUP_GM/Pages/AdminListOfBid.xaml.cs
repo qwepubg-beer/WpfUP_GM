@@ -33,15 +33,15 @@ namespace WpfUP_GM.Pages
             {
                 Bid bid = BidList.SelectedItem  as Bid;
                 var result = MessageBox.Show($"Внести изменения?", "Предупреждение", MessageBoxButton.YesNo);
-                switch (bid.TypeBid1.BidName)
+                switch (bid.TypeBid)
                 {
-                    case "Получение роль автор":
+                    case 1:
                         if (result == MessageBoxResult.Yes) { User edituser = Core.GMEntities.User.Find(bid.User.id); edituser.RoleID = 2; Core.GMEntities.SaveChanges();}
                         break;
-                    case "Разморозка аккаунта":
+                    case 2:
                         if (result == MessageBoxResult.Yes) { User edituser = Core.GMEntities.User.Find(bid.User.id); edituser.IsActive = true; Core.GMEntities.SaveChanges(); }
                         break;
-                    case "Разморозка книги":
+                    case 3:
                         if (result == MessageBoxResult.Yes) { Book editbook = Core.GMEntities.Book.Find(bid.Book.id); editbook.IsActive = true; Core.GMEntities.SaveChanges(); }
                         break;
                     default:

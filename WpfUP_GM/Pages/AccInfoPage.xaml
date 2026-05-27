@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
             <Button Name="MyAccount" Content="Мой аккаунт" Grid.Column="1" Click="MyAccount_Click"></Button>
             <Button Name="Rewiews" Content="Мои отзывы" Grid.Column="2" Click="Rewiews_Click"></Button>
-            <Button Name="Freeze"  Content="Ваш аккаунт заморожен" Grid.Column="3" Visibility="Hidden" Click="Freeze_Click"></Button>
+            <Button Name="Freeze"  Content="Заморожен" Grid.Column="3" Click="Freeze_Click" Visibility="Hidden"></Button>
             <Frame NavigationUIVisibility="Hidden" Name="UserFrame" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="5"/>
         <ComboBox x:Name="TypeListComboBox" Grid.Column="0" IsEditable="True" DisplayMemberPath="TypeName" SelectedValuePath="Id" SelectionChanged="TypeListComboBox_SelectionChanged" SelectedIndex="0" Margin="0">
         </ComboBox>

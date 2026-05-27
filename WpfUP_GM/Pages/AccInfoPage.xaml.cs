@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using static WpfUP_GM.Function;
 namespace WpfUP_GM.Pages
 {
     /// <summary>
@@ -25,8 +25,13 @@ namespace WpfUP_GM.Pages
         {
             InitializeComponent();
             TypeListComboBox.ItemsSource = Core.GMEntities.TypeBookList.ToList();
+            if(UserIsActive())
+            {
+                Freeze.Visibility = Visibility.Visible;
+            }
             TypeBookList typeBookList= TypeListComboBox.SelectedItem as  TypeBookList;
             UserFrame.NavigationService.Navigate(new ListOfBook(typeBookList));
+            
         }
 
         private void TypeListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

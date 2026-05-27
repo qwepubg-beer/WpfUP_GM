@@ -81,7 +81,7 @@ namespace WpfUP_GM
         }
         public static bool UserIsActive()
         {
-            return Static.user.IsActive;
+            return !Static.user.IsActive;
         }
         private static bool Emailvalidation(string email)
         {

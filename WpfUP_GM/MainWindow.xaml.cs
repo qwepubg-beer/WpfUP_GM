@@ -23,13 +23,14 @@ namespace WpfUP_GM
         {
             InitializeComponent();
             MainFrame.NavigationService.Navigate(new Katalog(false));
+            LoadDate();
 
         }
         public void LoadDate()
         {
             if (IsReg() && Static.user.RoleID == 3) { Admin.Visibility = Visibility.Visible; }
             if (IsReg() && Static.user.RoleID == 2 && Static.user.IsActive) { Author.Visibility = Visibility.Visible; }
-            if (IsReg() && !Static.user.IsActive) { Block.Visibility = Visibility.Visible; }
+            if (IsReg() && UserIsActive()) { Block.Visibility = Visibility.Visible; }
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
