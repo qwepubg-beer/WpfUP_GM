@@ -102,6 +102,8 @@ namespace WpfUP_GM.Pages
                         UserID = Static.user.id,
                         Text = RewText,
                         BookID = Book.id,
+                        IsActive=true,
+                        RewiewDate=DateTime.Now,
                         Rating = Rating
                     };
                     Core.GMEntities.Rewiew.Add(rep);
