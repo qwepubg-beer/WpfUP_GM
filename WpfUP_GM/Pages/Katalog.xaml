@@ -40,7 +40,7 @@
             </ListBox.ItemsPanel>
         </ListBox>
         <ComboBox x:Name="GenreComboBox" Grid.Column="3" IsEditable="True" DisplayMemberPath="GenreName" SelectedValuePath="Id" SelectionChanged="GenreComboBox_SelectionChanged"></ComboBox>
-        <ComboBox x:Name="TypeComboBox" Grid.Column="2" DisplayMemberPath="Name" SelectedValuePath="Id" IsEditable="True" SelectionChanged="TypeComboBox_SelectionChanged">
+        <ComboBox x:Name="TypeComboBox" Grid.Column="2" IsEditable="True" SelectionChanged="TypeComboBox_SelectionChanged">
             <ComboBoxItem Content="По рейтингу возрастание"></ComboBoxItem>
             <ComboBoxItem Content="По рейтингу убывание"></ComboBoxItem>
             <ComboBoxItem Content="По имени"></ComboBoxItem>

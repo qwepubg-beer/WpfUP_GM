@@ -33,7 +33,6 @@ namespace WpfUP_GM
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Rewiew> Rewiew { get; set; }
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeBid> TypeBid { get; set; }
         public virtual DbSet<TypeBookList> TypeBookList { get; set; }
         public virtual DbSet<User> User { get; set; }

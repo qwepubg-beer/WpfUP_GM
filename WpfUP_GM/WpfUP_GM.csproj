@@ -120,9 +120,6 @@
     <Compile Include="Role.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>BD.tt</DependentUpon>
-    </Compile>
     <Compile Include="TypeBid.cs">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>

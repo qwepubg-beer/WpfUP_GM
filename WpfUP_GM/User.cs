@@ -24,7 +24,11 @@ namespace WpfUP_GM
             this.Rewiew = new HashSet<Rewiew>();
             this.Report1 = new HashSet<Report>();
         }
-    
+        public int ReturnRoleID()
+        {
+            Role role = Core.GMEntities.Role.Find(RoleID);
+            return role != null ? role.id : 1;
+        }
         public int id { get; set; }
         public string login { get; set; }
         public string password { get; set; }
@@ -32,11 +36,7 @@ namespace WpfUP_GM
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int RoleID { get; set; }
-        public int ReturnRoleID()
-        {
-            Role role = Core.GMEntities.Role.Find(RoleID);
-            return role != null ? role.id : 1;
-        }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bid> Bid { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

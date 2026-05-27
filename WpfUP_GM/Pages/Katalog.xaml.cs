@@ -40,11 +40,13 @@ namespace WpfUP_GM.Pages
                 if (Static.user != null && Static.user.RoleID == 2)
                 {
                     BooksList = new ObservableCollection<Book>(Core.GMEntities.Book.Where(y => y.Author == Static.user.id).ToList());
+                    ProductList.ItemsSource = BooksList;
                 }
             }
             else
             {
                 BooksList = new ObservableCollection<Book>(Core.GMEntities.Book.Where(a => a.IsActive == true).ToList());
+                ProductList.ItemsSource = BooksList;
             }
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -62,7 +64,7 @@ namespace WpfUP_GM.Pages
         {
             if (ProductList.SelectedItem != null)
             {
-                if(Static.user.RoleID == 2)
+                if(Static.user!=null && Static.user.RoleID == 2)
                 {
                     Book book = ProductList.SelectedItem as Book;
                     var bookWindow = new AddChangeBookWindow(book: book, authorId: Static.user.id);
